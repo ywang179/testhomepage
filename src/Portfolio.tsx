@@ -1,19 +1,19 @@
-import "../styles/globals.css";
+import "./styles/globals.css";
 
-import imgProfile from "../imports/Homepage/bfb6f2a25f3acd87095005fe5f7726320aae6786.png";
-import imgImage707 from "../imports/Homepage/b8c546037727e8b477417514212ed336934b490f.png";
-import imgSubtract from "../imports/Homepage/ac0d43ec9a9286b864c20a7aa44098593cf94aa4.png";
-import imgImage711 from "../imports/Homepage/07b433322fdc8393302044bb81d7b7607d17f0f6.png";
-import imgImage710 from "../imports/Homepage/7df6ac73c1d78aca427cb088bc6c49553525a1da.png";
-import imgCacnyMinimalistHdNoBg1 from "../imports/Homepage/77759f506a66976631e53144f4c3b28b1dc5690f.png";
-import imgCacnyMinimalistHdNoBg2 from "../imports/Homepage/906802e3dd87ad145fbc25fc06b8b621c13df96c.png";
-import imgImage712 from "../imports/Homepage/edfeeaa52be5113a11c54c4db6d0dbbb4b9cb2b9.png";
-import imgImage713 from "../imports/Homepage/0dadcba52fdbf1af3006cde73fa57bc1730edb15.png";
-import imgImage709 from "../imports/Homepage/616c462c9a8ec1c0d4f2125f7a7f37a8fef1ae7e.png";
-import imgCrm1 from "../imports/Homepage/f5f5d6b6558af65b64c63509c384650c9e2cfcae.png";
-import imgHennessyMembership1 from "../imports/Homepage/7d71e5bbd5ec5552244fd2a54ff105c5522ff366.png";
-import img2025Amazon1 from "../imports/Homepage/b70da865a42f2073a04a93c3aa3f8bfcb3450519.png";
-import imgPawtner1 from "../imports/Homepage/4010de59587c2da8ff8e6c13c555f7224eb0ee03.png";
+import imgProfile from "./imports/Homepage/bfb6f2a25f3acd87095005fe5f7726320aae6786.png";
+import imgImage707 from "./imports/Homepage/b8c546037727e8b477417514212ed336934b490f.png";
+import imgSubtract from "./imports/Homepage/ac0d43ec9a9286b864c20a7aa44098593cf94aa4.png";
+import imgImage711 from "./imports/Homepage/07b433322fdc8393302044bb81d7b7607d17f0f6.png";
+import imgImage710 from "./imports/Homepage/7df6ac73c1d78aca427cb088bc6c49553525a1da.png";
+import imgCacnyMinimalistHdNoBg1 from "./imports/Homepage/77759f506a66976631e53144f4c3b28b1dc5690f.png";
+import imgCacnyMinimalistHdNoBg2 from "./imports/Homepage/906802e3dd87ad145fbc25fc06b8b621c13df96c.png";
+import imgImage712 from "./imports/Homepage/edfeeaa52be5113a11c54c4db6d0dbbb4b9cb2b9.png";
+import imgImage713 from "./imports/Homepage/0dadcba52fdbf1af3006cde73fa57bc1730edb15.png";
+import imgImage709 from "./imports/Homepage/616c462c9a8ec1c0d4f2125f7a7f37a8fef1ae7e.png";
+import imgCrm1 from "./imports/Homepage/f5f5d6b6558af65b64c63509c384650c9e2cfcae.png";
+import imgHennessyMembership1 from "./imports/Homepage/7d71e5bbd5ec5552244fd2a54ff105c5522ff366.png";
+import img2025Amazon1 from "./imports/Homepage/b70da865a42f2073a04a93c3aa3f8bfcb3450519.png";
+import imgPawtner1 from "./imports/Homepage/4010de59587c2da8ff8e6c13c555f7224eb0ee03.png";
 
 const PATH_ELLIPSE =
   "M1110 410.209C1110 1198.1 861.515 1198.1 554.998 1198.1C248.481 1198.1 0 1198.1 0 410.209C0 183.657 248.481 0 554.998 0C861.515 0 1110 183.657 1110 410.209Z";
