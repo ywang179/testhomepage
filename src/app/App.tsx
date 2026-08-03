@@ -89,7 +89,7 @@ export default function App() {
     const gradient = ctaGradientRef.current;
     if (!hasPlayedCtaAnimation || !gradient) return;
 
-    const duration = 2800;
+    const duration = 2000;
     const startTime = performance.now();
     let frameId = 0;
 
