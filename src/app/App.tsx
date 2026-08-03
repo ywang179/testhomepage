@@ -314,10 +314,44 @@ export default function App() {
         <div className="hp-footer-inner">
           <p
             ref={ctaRef}
-            className={`hp-cta-text${hasPlayedCtaAnimation ? " hp-cta-text--animated" : ""}`}
-            data-text="let's build together!"
+            className="hp-cta-text"
           >
-            {"let's build together!"}
+            <svg className="hp-cta-title-svg" viewBox="0 0 920 250" role="img" aria-label="let's build together!">
+              <defs>
+                <linearGradient id="cta-color-sweep" x1="0" y1="0" x2="920" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-920 0)">
+                  <stop offset="0%" stopColor="#8f4d92" stopOpacity="0" />
+                  <stop offset="39%" stopColor="#8f4d92" stopOpacity="0" />
+                  <stop offset="43%" stopColor="#8f4d92" />
+                  <stop offset="48%" stopColor="#ec6f34" />
+                  <stop offset="52%" stopColor="#f2c743" />
+                  <stop offset="57%" stopColor="#81b5e8" />
+                  <stop offset="61%" stopColor="#527cc4" />
+                  <stop offset="65%" stopColor="#527cc4" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#527cc4" stopOpacity="0" />
+                  {hasPlayedCtaAnimation && (
+                    <animateTransform
+                      attributeName="gradientTransform"
+                      type="translate"
+                      from="-920 0"
+                      to="920 0"
+                      dur="2.8s"
+                      fill="freeze"
+                    />
+                  )}
+                </linearGradient>
+              </defs>
+              <g fontFamily="Plus Jakarta Sans, sans-serif" fontSize="112" fontWeight="700" strokeWidth="2" strokeLinejoin="round">
+                <text x="0" y="100" fill="#000000" stroke="#000000">let&apos;s build</text>
+                <text x="0" y="220" fill="#000000" stroke="#000000">together!</text>
+                {hasPlayedCtaAnimation && (
+                  <g fill="url(#cta-color-sweep)" stroke="url(#cta-color-sweep)">
+                    <text x="0" y="100">let&apos;s build</text>
+                    <text x="0" y="220">together!</text>
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2.8s" fill="freeze" />
+                  </g>
+                )}
+              </g>
+            </svg>
           </p>
           <div className="hp-contact-wrap">
             <div className="hp-contact-row">
