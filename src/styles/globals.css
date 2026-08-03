@@ -556,6 +556,7 @@
 }
 
 .hp-cta-text {
+  position: relative;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 112px;
@@ -564,6 +565,56 @@
   word-break: break-word;
   margin: 0 0 28px 0;
   -webkit-text-stroke: 2px #000000;
+}
+
+.hp-cta-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 39%,
+    #8f4d92 43%,
+    #ec6f34 48%,
+    #f2c743 52%,
+    #81b5e8 57%,
+    #527cc4 61%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hp-cta-text--animated::after {
+  animation: hp-cta-color-sweep 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes hp-cta-color-sweep {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: 0 0;
+    opacity: 0;
+  }
 }
 
 /* Contact row – right-aligned within the 920px footer */
@@ -706,5 +757,11 @@
 
   .hp-location {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-cta-text--animated::after {
+    animation: none;
   }
 }

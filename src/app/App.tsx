@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import "../styles/globals.css";
 
 import imgProfile from "../imports/Homepage/bfb6f2a25f3acd87095005fe5f7726320aae6786.png";
@@ -62,6 +63,27 @@ function CardGradient({ id, stops }: { id: string; stops: { offset: string; colo
 }
 
 export default function App() {
+  const ctaRef = useRef<HTMLParagraphElement>(null);
+  const [hasPlayedCtaAnimation, setHasPlayedCtaAnimation] = useState(false);
+
+  useEffect(() => {
+    const cta = ctaRef.current;
+    if (!cta || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasPlayedCtaAnimation(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(cta);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="hp">
 
@@ -290,7 +312,13 @@ export default function App() {
       {/* ── FOOTER / CTA ── */}
       <footer className="hp-footer">
         <div className="hp-footer-inner">
-          <p className="hp-cta-text">{"let's build together!"}</p>
+          <p
+            ref={ctaRef}
+            className={`hp-cta-text${hasPlayedCtaAnimation ? " hp-cta-text--animated" : ""}`}
+            data-text="let's build together!"
+          >
+            {"let's build together!"}
+          </p>
           <div className="hp-contact-wrap">
             <div className="hp-contact-row">
 
