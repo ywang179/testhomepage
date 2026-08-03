@@ -594,7 +594,11 @@
 }
 
 .hp-cta-text--animated::after {
-  animation: hp-cta-color-sweep 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation: hp-cta-color-sweep 2.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.hp-cta-text--animated {
+  animation: hp-cta-outline-color 2.8s ease-in-out both;
 }
 
 @keyframes hp-cta-color-sweep {
@@ -614,6 +618,25 @@
   100% {
     background-position: 0 0;
     opacity: 0;
+  }
+}
+
+@keyframes hp-cta-outline-color {
+  0%,
+  100% {
+    -webkit-text-stroke-color: #000000;
+  }
+
+  36% {
+    -webkit-text-stroke-color: #8f4d92;
+  }
+
+  50% {
+    -webkit-text-stroke-color: #ec6f34;
+  }
+
+  62% {
+    -webkit-text-stroke-color: #527cc4;
   }
 }
 
@@ -761,6 +784,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hp-cta-text--animated,
   .hp-cta-text--animated::after {
     animation: none;
   }
