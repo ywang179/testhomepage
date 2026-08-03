@@ -107,12 +107,10 @@ export default function App() {
   }, [hasPlayedCtaAnimation]);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     let lastX = -Infinity;
     let lastY = -Infinity;
 
-    const createTrail = (event: PointerEvent) => {
+    const createTrail = (event: MouseEvent | PointerEvent) => {
       const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
       if (distance < 18) return;
 
@@ -128,7 +126,11 @@ export default function App() {
     };
 
     window.addEventListener("pointermove", createTrail, { passive: true });
-    return () => window.removeEventListener("pointermove", createTrail);
+    window.addEventListener("mousemove", createTrail, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", createTrail);
+      window.removeEventListener("mousemove", createTrail);
+    };
   }, []);
 
   return (
