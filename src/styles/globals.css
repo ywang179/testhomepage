@@ -8,6 +8,29 @@
   width: 100%;
 }
 
+.hp-cursor-trail {
+  position: fixed;
+  z-index: 100;
+  width: 22px;
+  height: 22px;
+  background: #8c8c8c;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: hp-cursor-trail-fade 640ms linear forwards;
+}
+
+@keyframes hp-cursor-trail-fade {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+}
+
 /* ── NAV ── */
 .hp-nav {
   background: #ffffff;

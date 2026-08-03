@@ -106,6 +106,34 @@ export default function App() {
     return () => cancelAnimationFrame(frameId);
   }, [hasPlayedCtaAnimation]);
 
+  useEffect(() => {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(pointer: fine)").matches
+    ) return;
+
+    let lastX = -Infinity;
+    let lastY = -Infinity;
+
+    const createTrail = (event: PointerEvent) => {
+      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
+      if (distance < 18) return;
+
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      const trail = document.createElement("span");
+      trail.className = "hp-cursor-trail";
+      trail.style.left = `${event.clientX}px`;
+      trail.style.top = `${event.clientY}px`;
+      document.body.appendChild(trail);
+      trail.addEventListener("animationend", () => trail.remove(), { once: true });
+    };
+
+    window.addEventListener("pointermove", createTrail, { passive: true });
+    return () => window.removeEventListener("pointermove", createTrail);
+  }, []);
+
   return (
     <div className="hp">
 
