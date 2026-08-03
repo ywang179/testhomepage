@@ -556,7 +556,7 @@
 }
 
 .hp-cta-text {
-  margin: 0 0 28px 0;
+  margin: 0;
 }
 
 .hp-cta-title-svg {
@@ -699,10 +699,6 @@
 
   .hp-footer {
     padding: 72px 20px;
-  }
-
-  .hp-cta-text {
-    margin-bottom: 20px;
   }
 
   .hp-contact-row {
