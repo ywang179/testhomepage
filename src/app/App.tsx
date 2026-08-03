@@ -112,7 +112,7 @@ export default function App() {
 
     const createTrail = (event: MouseEvent | PointerEvent) => {
       const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
-      if (distance < 18) return;
+      if (distance < 10) return;
 
       lastX = event.clientX;
       lastY = event.clientY;
