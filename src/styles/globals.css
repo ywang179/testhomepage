@@ -16,7 +16,7 @@
   background: #8c8c8c;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  animation: hp-cursor-trail-fade 2.4s linear forwards;
+  animation: hp-cursor-trail-fade 0.6s linear forwards;
 }
 
 @keyframes hp-cursor-trail-fade {
