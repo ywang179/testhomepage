@@ -566,6 +566,22 @@
   overflow: visible;
 }
 
+.hp-cta-sweep {
+  animation: hp-cta-sweep-fade 2.8s ease-in-out forwards;
+}
+
+@keyframes hp-cta-sweep-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  10%,
+  85% {
+    opacity: 1;
+  }
+}
+
 /* Contact row – right-aligned within the 920px footer */
 .hp-contact-wrap {
   display: flex;

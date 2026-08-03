@@ -64,6 +64,7 @@ function CardGradient({ id, stops }: { id: string; stops: { offset: string; colo
 
 export default function App() {
   const ctaRef = useRef<HTMLParagraphElement>(null);
+  const ctaGradientRef = useRef<SVGLinearGradientElement>(null);
   const [hasPlayedCtaAnimation, setHasPlayedCtaAnimation] = useState(false);
 
   useEffect(() => {
@@ -83,6 +84,27 @@ export default function App() {
     observer.observe(cta);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const gradient = ctaGradientRef.current;
+    if (!hasPlayedCtaAnimation || !gradient) return;
+
+    const duration = 2800;
+    const startTime = performance.now();
+    let frameId = 0;
+
+    const animateGradient = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const position = -920 + 1840 * easedProgress;
+      gradient.setAttribute("gradientTransform", `translate(${position} 0)`);
+
+      if (progress < 1) frameId = requestAnimationFrame(animateGradient);
+    };
+
+    frameId = requestAnimationFrame(animateGradient);
+    return () => cancelAnimationFrame(frameId);
+  }, [hasPlayedCtaAnimation]);
 
   return (
     <div className="hp">
@@ -318,7 +340,7 @@ export default function App() {
           >
             <svg className="hp-cta-title-svg" viewBox="0 0 920 250" role="img" aria-label="let's build together!">
               <defs>
-                <linearGradient id="cta-color-sweep" x1="0" y1="0" x2="920" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-920 0)">
+                <linearGradient ref={ctaGradientRef} id="cta-color-sweep" x1="0" y1="0" x2="920" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-920 0)">
                   <stop offset="0%" stopColor="#8f4d92" stopOpacity="0" />
                   <stop offset="39%" stopColor="#8f4d92" stopOpacity="0" />
                   <stop offset="43%" stopColor="#8f4d92" />
@@ -328,26 +350,15 @@ export default function App() {
                   <stop offset="61%" stopColor="#527cc4" />
                   <stop offset="65%" stopColor="#527cc4" stopOpacity="0" />
                   <stop offset="100%" stopColor="#527cc4" stopOpacity="0" />
-                  {hasPlayedCtaAnimation && (
-                    <animateTransform
-                      attributeName="gradientTransform"
-                      type="translate"
-                      from="-920 0"
-                      to="920 0"
-                      dur="2.8s"
-                      fill="freeze"
-                    />
-                  )}
                 </linearGradient>
               </defs>
               <g fontFamily="Plus Jakarta Sans, sans-serif" fontSize="112" fontWeight="700" strokeWidth="2" strokeLinejoin="round">
                 <text x="0" y="100" fill="#000000" stroke="#000000">let&apos;s build</text>
                 <text x="0" y="220" fill="#000000" stroke="#000000">together!</text>
                 {hasPlayedCtaAnimation && (
-                  <g fill="url(#cta-color-sweep)" stroke="url(#cta-color-sweep)">
+                  <g className="hp-cta-sweep" fill="url(#cta-color-sweep)" stroke="url(#cta-color-sweep)">
                     <text x="0" y="100">let&apos;s build</text>
                     <text x="0" y="220">together!</text>
-                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2.8s" fill="freeze" />
                   </g>
                 )}
               </g>
