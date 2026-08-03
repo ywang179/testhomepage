@@ -65,7 +65,10 @@ function CardGradient({ id, stops }: { id: string; stops: { offset: string; colo
 export default function App() {
   const ctaRef = useRef<HTMLParagraphElement>(null);
   const ctaGradientRef = useRef<SVGLinearGradientElement>(null);
+  const lastTrailPositionRef = useRef({ x: -Infinity, y: -Infinity });
+  const trailIdRef = useRef(0);
   const [hasPlayedCtaAnimation, setHasPlayedCtaAnimation] = useState(false);
+  const [cursorTrailPieces, setCursorTrailPieces] = useState<{ id: number; x: number; y: number }[]>([]);
 
   useEffect(() => {
     const cta = ctaRef.current;
@@ -106,35 +109,23 @@ export default function App() {
     return () => cancelAnimationFrame(frameId);
   }, [hasPlayedCtaAnimation]);
 
-  useEffect(() => {
-    let lastX = -Infinity;
-    let lastY = -Infinity;
+  const addCursorTrail = (x: number, y: number) => {
+    const lastPosition = lastTrailPositionRef.current;
+    if (Math.hypot(x - lastPosition.x, y - lastPosition.y) < 10) return;
 
-    const createTrail = (event: MouseEvent | PointerEvent) => {
-      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
-      if (distance < 10) return;
-
-      lastX = event.clientX;
-      lastY = event.clientY;
-
-      const trail = document.createElement("span");
-      trail.className = "hp-cursor-trail";
-      trail.style.left = `${event.clientX}px`;
-      trail.style.top = `${event.clientY}px`;
-      document.body.appendChild(trail);
-      trail.addEventListener("animationend", () => trail.remove(), { once: true });
-    };
-
-    window.addEventListener("pointermove", createTrail, { passive: true });
-    window.addEventListener("mousemove", createTrail, { passive: true });
-    return () => {
-      window.removeEventListener("pointermove", createTrail);
-      window.removeEventListener("mousemove", createTrail);
-    };
-  }, []);
+    lastTrailPositionRef.current = { x, y };
+    const id = trailIdRef.current++;
+    setCursorTrailPieces((pieces) => [...pieces.slice(-80), { id, x, y }]);
+    window.setTimeout(() => {
+      setCursorTrailPieces((pieces) => pieces.filter((piece) => piece.id !== id));
+    }, 4000);
+  };
 
   return (
-    <div className="hp">
+    <div className="hp" onMouseMove={(event) => addCursorTrail(event.clientX, event.clientY)}>
+      {cursorTrailPieces.map((piece) => (
+        <span key={piece.id} className="hp-cursor-trail" style={{ left: piece.x, top: piece.y }} />
+      ))}
 
       {/* ── NAV ── */}
       <header className="hp-nav">
