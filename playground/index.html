@@ -152,6 +152,18 @@ a{color:inherit}
       <h2>Product analysis from a grocery shopper's point of view</h2>
       <p>A close look at Walmart's grocery experience, for INFO-646 Digital Product&nbsp;Design.</p></div>
     </div>
+    <div class="it card static" data-k="vis">
+      <div class="media"><img src="a/visitor-study.webp" width="1200" height="675" alt="Visitor study deck cover: Shifting Landscapes, understanding visitors' views on American art"></div>
+      <div class="info"><ul class="tags"><li>2025 · Course Project</li><li>Audience Research</li></ul>
+      <h2>Understanding visitors' views on American art</h2>
+      <p>A visitor study for INFO-693 Audience Research and Evaluation at&nbsp;Pratt.</p></div>
+    </div>
+    <div class="it card static" data-k="wik">
+      <div class="media"><img src="a/wikipedia-audit.webp" width="1200" height="675" alt="Wikipedia app accessibility audit: project scope slide for the reading and search experience"></div>
+      <div class="info"><ul class="tags"><li>2026 · Accessibility Audit</li><li>Mobile App</li></ul>
+      <h2>Accessibility audit of the Wikipedia app's reading and search experience</h2>
+      <p>Covers article search, reading, offline mode, media and language&nbsp;switching.</p></div>
+    </div>
     <div class="it card static" data-k="cac">
       <div class="bw"><div class="bwbar" aria-hidden="true"><i></i><i></i><i></i><span>cacny.org</span></div>
       <div class="bwview" tabindex="0" aria-label="CACNY homepage design, scroll to see the whole page"><img src="a/cacny-full.webp" width="960" height="3838" alt="The full CACNY homepage redesign, from the hero down to the footer" loading="lazy"></div>
@@ -202,7 +214,7 @@ a{color:inherit}
 const board=document.getElementById("board"),world=document.getElementById("world");
 /* layout: wide scatter on desktop, a staggered column on phones */
 const L=()=>{const m=innerWidth<600,cw=Math.min(560,innerWidth-48);
-  const pos=m?{amz:[0,0,cw],wal:[0,0,cw],cac:[0,0,cw],paw:[0,0,cw],sv:[0,0,cw],giv:[0,0,cw]}:{amz:[0,0,600],paw:[680,50,600],wal:[1360,0,560],sv:[160,560,440],giv:[740,620,440],cac:[1320,560,620]};
+  const pos=m?{amz:[0,0,cw],wal:[0,0,cw],cac:[0,0,cw],paw:[0,0,cw],sv:[0,0,cw],giv:[0,0,cw],vis:[0,0,cw],wik:[0,0,cw]}:{amz:[0,0,600],paw:[680,50,600],wal:[1360,0,560],sv:[160,560,440],giv:[740,620,440],cac:[1320,560,620],vis:[160,1240,540],wik:[780,1260,540]};
   let y=0;world.querySelectorAll(".it").forEach(e=>{const q=pos[e.dataset.k];e.style.width=q[2]+"px";e.style.left=q[0]+"px";
     if(m){e.style.top=y+"px";y+=e.offsetHeight+56;}else e.style.top=q[1]+"px";});};
 L();
