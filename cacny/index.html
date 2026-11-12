@@ -1,0 +1,341 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CACNY Homepage Redesign</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chango&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800;900&display=swap">
+<style>
+/* Built from Figma "CACNY Website Redesign" · node 2:35865 (Homepage). Single light look on purpose: the brand is cream + bright blue. */
+:root{
+  color-scheme:light;
+  --cream:#FFFCE6;--blue:#3FA5FF;--blue-2:#2481D3;--red:#FF371A;--yellow:#FFB52C;--purple:#9534EF;--green:#96D10C;--orange:#F49404;
+  --ink:#1E1E1E;--ink-2:#303030;--muted:#757575;--nav:rgba(0,0,0,.5);
+  --tag-g:#F1F7E5;--tag-o:#FBF2E3;--tag-p:#EDE7F2;--tag-p-ink:#622C94;
+  --f-disp:"Chango","Poppins",system-ui,sans-serif;
+  --f-ui:"Poppins","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --f-av:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Arial,sans-serif;
+  --side:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html,body{background:var(--cream)}
+main,footer{overflow-x:clip}
+body{margin:0;color:var(--ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1320px,100%);margin:0 auto}
+.pad{padding-left:max(60px,env(safe-area-inset-left,0px));padding-right:max(60px,env(safe-area-inset-right,0px))}
+h2.sec{margin:0;font:700 40px/1.2 var(--f-ui);color:var(--blue);text-transform:capitalize;flex:1}
+.lead{margin:0;font:400 20px/1.2 var(--f-body)}
+.lead.m{color:var(--muted)}
+.viewall{font:600 16px/1.4 var(--f-ui);color:var(--blue);text-decoration:underline;padding:8px 12px;border-radius:8px}
+.viewall.n{font-weight:400;text-decoration:none}
+.btn-cream{display:inline-flex;align-items:center;justify-content:center;height:56px;width:160px;border-radius:32px;background:var(--cream);color:var(--blue);font:900 20px/1.4 var(--f-av);transition:transform .2s}
+.btn-cream:hover{transform:translateY(-2px)}
+
+/* nav — 4:37337 */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:10px max(60px,env(safe-area-inset-right,0px)) 10px max(60px,env(safe-area-inset-left,0px));background:var(--cream)}
+.nav .l{display:flex;align-items:center;gap:12px}
+.nav .logo{width:114px;height:18px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px}
+.nav .tab{display:flex;align-items:center;gap:8px;padding:10px;font:400 20px/1.2 var(--f-ui);color:var(--nav);white-space:nowrap}
+.nav .tab img{width:12px;height:6px;transform:rotate(180deg)}
+.nav .tab:hover{color:#000}
+.nav .r{display:flex;align-items:center;gap:16px}
+.nav .srch{width:40px;height:40px;display:grid;place-items:center;border-radius:50%}
+.nav .srch svg{width:22px;height:22px;fill:none;stroke:var(--nav);stroke-width:2;stroke-linecap:round}
+.nav .menu{display:none}
+
+/* hero — 4:37548 */
+.hero{padding:47px max(60px,env(safe-area-inset-right,0px)) 48px max(60px,env(safe-area-inset-left,0px))}
+.hcard{position:relative;width:min(1320px,100%);margin:0 auto;aspect-ratio:1320/780;background:var(--blue);border-radius:48px;overflow:hidden}
+.htop{position:absolute;left:0;right:0;top:7.9%;display:flex;flex-direction:column;align-items:center;gap:24px;z-index:2}
+.hrow{display:flex;align-items:center;gap:17px}
+.word{margin:0;font:400 128px/1.3 var(--f-disp);letter-spacing:-.06em;color:var(--cream)}
+.word span{text-shadow:7px 0 0 var(--c)}
+.tag3{font:800 32px/1.2 var(--f-av);letter-spacing:-.02em;color:var(--cream);margin:0}
+.hcard .crowd{position:absolute;left:-4.24%;bottom:0;width:103.3%;max-width:none;transform:translateY(20%);z-index:1;pointer-events:none}
+
+/* stats — 2:35891 */
+.stats{display:flex;justify-content:center;gap:53px;padding:48px 32px;flex-wrap:wrap}
+.stat{display:flex;align-items:center;gap:8px}
+.stat .ic{position:relative;width:70px;height:70px;flex:none}
+.stat .ic.sch img.s{position:absolute;left:11px;top:11px;width:48px;height:48px;padding:4.3px 4px 0}
+.stat .ic.sch img.d{position:absolute;left:31px;top:29px;width:8px;height:8px}
+.stat b{display:block;font:400 48px/1.2 var(--f-disp);letter-spacing:-.02em;color:var(--blue);white-space:nowrap}
+.stat span{display:block;margin-top:4px;font:400 16px/1.4 var(--f-body);color:var(--muted)}
+.stat .t{width:168px}
+
+/* offers — 2:35926 */
+.offers{padding-block:72px;display:grid;gap:48px}
+.hd{display:flex;align-items:center;gap:10px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.card .im{height:480px;border-radius:60px;overflow:hidden}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .im img{transform:scale(1.04)}
+.card .bd{padding-block:24px;display:grid;gap:12px}
+.card h3{margin:0;font:600 32px/1.2 var(--f-ui);letter-spacing:-.02em;color:var(--c)}
+.card p{margin:0;font:400 16px/1.4 var(--f-ui);color:var(--ink)}
+
+/* event — 2:35936 */
+.next{padding-block:72px;display:grid;gap:48px}
+.next .top{display:grid;gap:16px}
+.ev{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.ev .im{height:408px;border-radius:60px;overflow:hidden}
+.ev .im img{width:100%;height:100%;object-fit:cover}
+.ev .bd{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.meta{display:grid;gap:8px}
+.meta p{margin:0;display:flex;align-items:center;gap:8px;font:400 20px/1.4 var(--f-ui);color:var(--muted)}
+.meta img{width:20px;height:20px}
+.ev h3{margin:16px 0 8px;font:800 40px/1.2 var(--f-av);letter-spacing:-.02em;color:var(--ink-2)}
+.ev .desc{margin:0 0 8px;font:400 20px/1.4 var(--f-ui);color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.tags li{padding:4px 8px;border-radius:16px;font:400 16px/1.2 var(--f-ui)}
+.tg{background:var(--tag-g);color:var(--green)}.to{background:var(--tag-o);color:var(--orange)}.tp{background:var(--tag-p);color:var(--tag-p-ink)}
+.reg{display:flex;align-items:center;justify-content:center;height:72px;border-radius:41px;background:var(--blue);color:#fff;font:500 24px/1.4 var(--f-ui);transition:background .2s}
+.reg:hover{background:var(--blue-2)}
+.pager{position:relative;display:flex;justify-content:center;align-items:center;height:48px}
+.pager .dots{width:46px;height:10.4px}
+.pager .ar{position:absolute;left:50%;top:0;width:258px;transform:translateX(-50%);display:flex;justify-content:space-between}
+.pager .ar button{width:48px;height:48px}
+.pager .ar img{width:48px;height:48px}
+.pager .ar .p img{transform:rotate(90deg);opacity:.4}
+.pager .ar .n img{transform:rotate(-90deg)}
+
+/* testimonials — 2:35972 */
+.words{padding-block:72px;display:grid;gap:48px}
+.words .top{display:grid;gap:16px}
+.tlist{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 24px 16px 28px;margin-inline:-24px;scrollbar-width:none}
+.tlist::-webkit-scrollbar{display:none}
+.tc{margin:0;position:relative;flex:none;width:300px;height:440px;border-radius:48px;background:rgba(161,211,255,.2);display:flex;align-items:center;padding-left:66px;scroll-snap-align:start}
+.tc .in{display:grid;gap:18px;width:200px}
+.tc q{quotes:none;font:400 20px/30px var(--f-ui);color:var(--ink)}
+.tc .who{display:flex;align-items:center;gap:11px}
+.tc .who img{width:72px;height:72px;border-radius:50%}
+.tc .who b{display:block;font:400 16px/1.2 var(--f-ui);color:#000}
+.tc .who span{display:block;margin-top:4px;font:500 16px/1.4 var(--f-ui);color:#000}
+.tc .qm{position:absolute;left:-14px;top:24px;font:400 96px/1 var(--f-disp);color:var(--c);transform:scaleY(-1) scaleX(-1);height:60px;overflow:visible}
+
+/* CTA — 2:35989 */
+.cta{padding-block:72px}
+.cbox{position:relative;height:598px;border-radius:48px;overflow:hidden;background:rgba(87,176,255,.8);display:grid;place-items:center;padding:32px;text-align:center}
+.cbg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;mix-blend-mode:hard-light}
+.cbg div{position:relative;width:783px;height:587px;opacity:.6;flex:none}
+.cbg div+div{margin-left:-6px}
+.cbg img{width:100%;height:100%;object-fit:cover}
+.cbg div::after{content:"";position:absolute;inset:0;background:rgba(22,138,240,.6)}
+.cin{position:relative;display:grid;gap:48px;justify-items:center;max-width:1142px;color:var(--cream)}
+.cin h2{margin:0;font:400 48px/1.2 var(--f-disp)}
+.cin p{margin:16px 0 0;font:400 20px/1.2 var(--f-body)}
+
+/* FAQ — 2:35998 */
+.faq{padding-block:108px 132px;display:grid;gap:48px}
+.faq .top{display:grid;gap:16px}
+.acc{display:grid;gap:16px}
+.ai{border-bottom:1px solid #000}
+.ai:last-child{border-bottom:0}
+.ai button{width:100%;display:flex;align-items:center;gap:8px;padding:16px;text-align:left;font:600 16px/1.4 var(--f-body);color:var(--ink)}
+.ai button span{flex:1}
+.ai button img{width:20px;height:20px}
+.ai .ans{padding:0 16px 16px;margin-top:-8px;font:400 16px/1.4 var(--f-body);color:var(--ink)}
+
+/* footer — 4:37699 */
+.foot{background:var(--blue);color:#fff;padding-top:60px;padding-bottom:60px;overflow:hidden}
+.ftop{display:grid;grid-template-columns:minmax(0,25.14%) minmax(0,1fr);gap:0}
+.fl{display:grid;gap:20px;align-content:start}
+.fl .lg{width:223px;max-width:100%;height:56px;object-fit:cover;object-position:left top}
+.soc{display:flex;gap:12px;flex-wrap:wrap}
+.soc a{width:40px;height:40px;position:relative;display:block}
+.soc a img{width:40px;height:40px}
+.soc a img.fb{position:absolute;left:10px;top:10px;width:20px;height:20px}
+.fcols{display:flex;gap:64px;flex-wrap:wrap}
+.fcols h4{margin:0 0 24px;font:700 20px/1.2 var(--f-ui)}
+.fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:16px;font:400 20px/1.2 var(--f-body)}
+.fcols a:hover{text-decoration:underline;text-underline-offset:3px}
+.big{margin:128px 0 0;font:400 100px/1.25 var(--f-disp);letter-spacing:-.06em;color:var(--cream)}
+
+/* responsive */
+@media (max-width:1180px){
+  .nav ul{gap:0}.nav .tab{font-size:17px}
+  .word{font-size:96px}.tag3{font-size:26px}
+  .cards{gap:24px}.card .im{height:380px}
+  .big{font-size:76px}
+}
+@media (max-width:959px){
+  .pad,.hero{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+  .nav{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+  .nav ul,.nav .r .tab{display:none}.nav .menu{display:grid}
+  .hcard{aspect-ratio:auto;height:640px}
+  .htop{top:56px}.hrow{flex-direction:column;gap:8px;text-align:center}
+  .word{font-size:84px}.tag3{font-size:24px}
+  .hcard .crowd{left:50%;width:auto;height:72%;transform:translate(-50%,10%)}
+  .cards{grid-template-columns:1fr}.card .im{height:360px;border-radius:40px}
+  .ev{grid-template-columns:1fr}.ev .im{height:320px;border-radius:40px}
+  .ftop{grid-template-columns:1fr;gap:40px}
+  .big{font-size:56px;margin-top:72px}
+  .cbg div{width:520px;height:390px}
+}
+@media (max-width:599px){
+  .pad,.hero{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .nav{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .hero{padding-top:16px;padding-bottom:24px}
+  .hcard{height:520px;border-radius:32px}
+  .word{font-size:56px}.word span{text-shadow:4px 0 0 var(--c)}.tag3{font-size:19px}
+  .btn-cream{height:48px;width:144px;font-size:18px}
+  .stats{gap:24px 16px;padding:32px 16px;justify-content:flex-start}
+  .stat{width:calc(50% - 8px)}.stat .ic{width:48px;height:48px}.stat .ic img{width:48px;height:48px}
+  .stat .ic.sch img.s{left:7px;top:7px;width:34px;height:34px;padding:3px 3px 0}.stat .ic.sch img.d{left:21px;top:20px;width:6px;height:6px}
+  .stat b{font-size:30px}.stat span{font-size:14px}.stat .t{width:auto}
+  h2.sec{font-size:28px}.lead{font-size:17px}
+  .offers,.next,.words,.cta{padding-block:48px}
+  .card h3{font-size:26px}.card .im{height:280px;border-radius:32px}
+  .ev .im{height:240px;border-radius:32px}.ev h3{font-size:30px}.ev .desc,.meta p{font-size:17px}.reg{height:60px;font-size:20px}
+  .tc{width:260px;height:400px;padding-left:48px}.tlist{gap:24px;margin-inline:-16px;padding-inline:20px 16px}
+  .cbox{height:auto;padding:72px 20px;border-radius:32px}.cin{gap:32px}.cin h2{font-size:32px}.cin p{font-size:17px}
+  .faq{padding-block:56px 72px}.cbg div+div{display:none}.cbg div{width:640px;height:640px}
+  .fcols{gap:32px 40px}.fcols h4{font-size:18px;margin-bottom:16px}.fcols ul{font-size:16px;gap:12px}
+  .big{font-size:38px;letter-spacing:-.05em}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="nav">
+  <div class="l">
+    <a href="#top" aria-label="CACNY home"><img class="logo" src="a/6df45.svg" width="114" height="18" alt="CACNY"></a>
+    <ul>
+      <li><a class="tab" href="#offers">About Us<img src="a/ade4f.svg" alt=""></a></li>
+      <li><a class="tab" href="#join">Membership<img src="a/ade4f.svg" alt=""></a></li>
+      <li><a class="tab" href="#next">Events<img src="a/ade4f.svg" alt=""></a></li>
+      <li><a class="tab" href="#faq">Resources<img src="a/ade4f.svg" alt=""></a></li>
+      <li><a class="tab" href="#join">Support Us<img src="a/ade4f.svg" alt=""></a></li>
+    </ul>
+  </div>
+  <div class="r">
+    <a class="tab" href="#foot">Contact</a>
+    <a class="tab" href="#join">Login/Sign Up</a>
+    <button class="srch" type="button" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button class="srch menu" type="button" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hcard">
+      <div class="htop">
+        <div class="hrow">
+          <h1 class="word" id="hero-h" aria-label="CACNY"><span style="--c:#FF371A">C</span><span style="--c:#2481D3">A</span><span style="--c:#FFB52C">C</span><span style="--c:#9534EF">N</span><span style="--c:#96D10C">Y</span></h1>
+          <p class="tag3">Where<br>college access grows<br>through community</p>
+        </div>
+        <a class="btn-cream" href="#join">Join Us Now</a>
+      </div>
+      <img class="crowd" src="a/hero.webp" width="1600" height="1215" alt="CACNY members gathered on a stage, smiling and making hand signs">
+    </div>
+  </section>
+
+  <section class="stats" aria-label="CACNY in numbers">
+    <div class="stat"><div class="ic"><img src="a/e8d55.svg" width="70" height="70" alt=""></div><div class="t"><b>36+</b><span>Years History</span></div></div>
+    <div class="stat"><div class="ic"><img src="a/3fb25.svg" width="70" height="70" alt=""></div><div class="t"><b>70+</b><span>Yearly Events</span></div></div>
+    <div class="stat"><div class="ic sch"><img class="s" src="a/323de.svg" alt=""><img class="d" src="a/b9302.svg" alt=""></div><div class="t"><b>100+</b><span>Organizations</span></div></div>
+    <div class="stat"><div class="ic"><img src="a/9963b.svg" width="70" height="70" alt=""></div><div class="t"><b>1,200+</b><span>Members</span></div></div>
+  </section>
+
+  <section class="offers pad" id="offers"><div class="wrap" style="display:grid;gap:48px">
+    <div class="hd"><h2 class="sec">What we’re excited to bring to you</h2><a class="viewall" href="#offers">View All</a></div>
+    <div class="cards">
+      <article class="card" style="--c:var(--green)"><div class="im"><img src="a/card1.webp" width="900" height="608" alt="Coins stacked in growing piles with small plants" loading="lazy"></div><div class="bd"><h3>Financial Support</h3><p>CACNY offers need-based scholarships, grants, and financial aid workshops to help students overcome financial barriers.</p></div></article>
+      <a class="card" href="#next" style="--c:var(--purple)"><div class="im"><img src="a/card2.webp" width="900" height="1200" alt="CACNY volunteers at an event table" loading="lazy"></div><div class="bd"><h3>In-Person Events</h3><p>We host college fairs, campus tours, and info sessions to give students a firsthand look at college life and connect them with admissions reps.</p></div></a>
+      <article class="card" style="--c:var(--orange)"><div class="im"><img src="a/card3.webp" width="900" height="1130" alt="A group of CACNY members in matching shirts" loading="lazy"></div><div class="bd"><h3>Online Community</h3><p>CACNY has a wide online community to search for events, connect with peers, and access resources for college success.</p></div></article>
+    </div>
+  </div></section>
+
+  <section class="next pad" id="next"><div class="wrap" style="display:grid;gap:48px">
+    <div class="top">
+      <div class="hd"><h2 class="sec">What’s next</h2><a class="viewall n" href="#next">View All</a></div>
+      <p class="lead">Stay tuned for our next event, where we continue to support NYC students on their path to college success.</p>
+    </div>
+    <article class="ev">
+      <div class="im"><img src="a/event.webp" width="1300" height="731" alt="A speaker presenting to an audience at a CACNY event" loading="lazy"></div>
+      <div class="bd">
+        <div>
+          <div class="meta"><p><img src="a/85ed3.svg" alt="Location">TBD</p><p><img src="a/85ed3.svg" alt="Date">Nov 17 @ 5:00 pm - 6:00 pm EST</p></div>
+          <h3>Professional Development Day</h3>
+          <p class="desc">Join us for a day of professional development, networking, and learning. This event will feature keynote speakers, interactive workshops, and opportunities to connect with other counseling professionals.</p>
+          <ul class="tags"><li class="tg">Member Only</li><li class="to">Professional Development</li><li class="tp">All Audiences</li></ul>
+        </div>
+        <a class="reg" href="#join">Register</a>
+      </div>
+    </article>
+    <div class="pager">
+      <img class="dots" src="a/025e0.svg" alt="Event 1 of 3">
+      <div class="ar"><button class="p" type="button" aria-label="Previous event" disabled><img src="a/a3396.svg" alt=""></button><button class="n" type="button" aria-label="Next event"><img src="a/a3396.svg" alt=""></button></div>
+    </div>
+  </div></section>
+
+  <section class="words pad"><div class="wrap" style="display:grid;gap:48px">
+    <div class="top">
+      <div class="hd"><h2 class="sec">Words from our members</h2></div>
+      <p class="lead m">Read inspiring stories from CACNY members who have achieved college success through our programs and support.</p>
+    </div>
+    <div class="tlist" tabindex="0" aria-label="Member testimonials, scroll sideways">
+      <figure class="tc" style="--c:var(--yellow)"><span class="qm" aria-hidden="true">“</span><div class="in"><q>Thanks to CACNY, I secured a role as a college advisor, helping first-generation students achieve their dreams.</q><figcaption class="who"><img src="a/av1.webp" alt=""><span><b>Agathe Dufour</b><span>Senior Director</span></span></figcaption></div></figure>
+      <figure class="tc" style="--c:var(--purple)"><span class="qm" aria-hidden="true">“</span><div class="in"><q>Thanks to CACNY, I secured a role as a college advisor, helping first-generation students achieve their dreams.</q><figcaption class="who"><img src="a/av1.webp" alt=""><span><b>Agathe Dufour</b><span>Senior Director</span></span></figcaption></div></figure>
+      <figure class="tc" style="--c:var(--blue)"><span class="qm" aria-hidden="true">“</span><div class="in"><q>Thanks to CACNY, I secured a role as a college advisor, helping first-generation students achieve their dreams.</q><figcaption class="who"><img src="a/av1.webp" alt=""><span><b>Agathe Dufour</b><span>Senior Director</span></span></figcaption></div></figure>
+      <figure class="tc" style="--c:var(--green)"><span class="qm" aria-hidden="true">“</span><div class="in" style="gap:32px"><q>CACNY's workshops equipped me with the knowledge to advocate for equitable college access policies.</q><figcaption class="who"><img src="a/av2.webp" alt=""><span><b>Agathe Dufour</b><span>Senior Director</span></span></figcaption></div></figure>
+      <figure class="tc" style="--c:var(--red)"><span class="qm" aria-hidden="true">“</span><div class="in"><q>CACNY's workshops equipped me with the knowledge to advocate for equitable college access policies.</q><figcaption class="who"><img src="a/av3.webp" alt=""><span><b>Agathe Dufour</b><span>Senior Director</span></span></figcaption></div></figure>
+    </div>
+  </div></section>
+
+  <section class="cta pad" id="join"><div class="wrap">
+    <div class="cbox">
+      <div class="cbg" aria-hidden="true"><div><img src="a/cta1.webp" alt="" loading="lazy"></div><div><img src="a/cta2.webp" alt="" loading="lazy"></div></div>
+      <div class="cin"><div><h2>Become Our Next Member</h2><p>Join CACNY and be part of a dynamic network dedicated to championing college access and success for NYC students. Together, we can make a difference.</p></div><a class="btn-cream" href="#join">Join Us Now</a></div>
+    </div>
+  </div></section>
+
+  <section class="faq pad" id="faq"><div class="wrap" style="display:grid;gap:48px">
+    <div class="top">
+      <div class="hd"><h2 class="sec">Frequently Asked Questions</h2></div>
+      <p class="lead m">Explore our resources, programs, and advocacy initiatives designed to help NYC students achieve their college aspirations. Join us in creating a brighter future for higher education.</p>
+    </div>
+    <div class="acc">
+      <div class="ai"><button type="button" aria-expanded="true"><span>What is CACNY?</span><img src="a/85a87.svg" alt=""></button><p class="ans">CACNY is a non-profit organization dedicated to supporting NYC students in their pursuit of higher education through resources, programs, and advocacy.</p></div>
+      <div class="ai"><button type="button" aria-expanded="false"><span>Who can become a member?</span><img src="a/42908.svg" alt=""></button><p class="ans" hidden>Answer to come.</p></div>
+      <div class="ai"><button type="button" aria-expanded="false"><span>How can I donate to CACNY?</span><img src="a/42908.svg" alt=""></button><p class="ans" hidden>Answer to come.</p></div>
+      <div class="ai"><button type="button" aria-expanded="false"><span>What kind of events does CACNY host?</span><img src="a/42908.svg" alt=""></button><p class="ans" hidden>Answer to come.</p></div>
+      <div class="ai"><button type="button" aria-expanded="false"><span>How can CACNY help me with college applications?</span><img src="a/42908.svg" alt=""></button><p class="ans" hidden>Answer to come.</p></div>
+    </div>
+  </div></section>
+</main>
+
+<footer class="foot pad" id="foot"><div class="wrap">
+  <div class="ftop">
+    <div class="fl">
+      <img class="lg" src="a/flogo.webp" width="700" height="199" alt="CACNY">
+      <div class="soc">
+        <a href="#foot" aria-label="X"><img src="a/ac66a.svg" alt=""></a>
+        <a href="#foot" aria-label="Instagram"><img src="a/4d739.svg" alt=""></a>
+        <a href="#foot" aria-label="YouTube"><img src="a/a3eed.svg" alt=""></a>
+        <a href="#foot" aria-label="LinkedIn"><img src="a/bd472.svg" alt=""></a>
+        <a href="#foot" aria-label="Facebook"><img src="a/2bd19.svg" alt=""><img class="fb" src="a/4f5a4.svg" alt=""></a>
+      </div>
+    </div>
+    <div class="fcols">
+      <div><h4>About Us</h4><ul><li><a href="#top">Overview</a></li><li><a href="#top">History</a></li><li><a href="#top">Meet The Team</a></li></ul></div>
+      <div><h4>Membership</h4><ul><li><a href="#join">Manage Membership</a></li><li><a href="#join">Member Directory</a></li><li><a href="#join">Discussion Forum</a></li></ul></div>
+      <div><h4>Events</h4><ul><li><a href="#next">Upcoming Events</a></li><li><a href="#next">Event Archive</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="#faq">Resource Library</a></li><li><a href="#faq">Submit a Resource</a></li><li><a href="#faq">CACNY Bylaws</a></li></ul></div>
+    </div>
+  </div>
+  <p class="big">Where<br>College Access Grows<br>Through Community</p>
+</div></footer>
+
+<script>
+document.querySelectorAll(".ai button").forEach(b=>b.addEventListener("click",()=>{const open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",!open);b.nextElementSibling.hidden=open;b.querySelector("img").src=open?"a/42908.svg":"a/85a87.svg";}));
+</script>
+
+</body></html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
+<title>FanCut Create Flow</title>
+<style>
+@font-face{font-family:"Amazon Ember";src:url(../hook/fonts/AmazonEmber-Regular.woff) format("woff");font-weight:400}
+@font-face{font-family:"Amazon Ember";src:url(../hook/fonts/AmazonEmber-Bold.woff) format("woff");font-weight:700}
+:root{color-scheme:light dark}*{box-sizing:border-box}html,body{margin:0;background:transparent;overflow:hidden}
+body{font:400 14px/1.35 "Amazon Ember",system-ui,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.ph{position:relative;width:393px;height:852px;border-radius:44px;background:#000;overflow:hidden;box-shadow:0 0 0 1px rgba(127,127,127,.35)}
+.sb{position:absolute;top:0;left:0;right:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 44px;font:700 17px "Amazon Ember";z-index:5}
+.sb i{display:flex;gap:6px;align-items:center}.sb i b{width:18px;height:11px;border-radius:2px;background:linear-gradient(90deg,#fff 0 25%,transparent 0 33%,#fff 0 58%,transparent 0 66%,#fff 0)}.sb i u{width:26px;height:12px;border-radius:4px;border:1.5px solid #fff;position:relative}.sb i u::after{content:"";position:absolute;inset:1.5px 4px 1.5px 1.5px;background:#fff;border-radius:2px}
+.home{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#fff;z-index:5}
+.scr{position:absolute;inset:0;display:none;flex-direction:column}.scr.on{display:flex}
+.top{height:54px;margin-top:54px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex:none}
+.top button{background:none;border:0;color:#fff;font:700 15px "Amazon Ember";letter-spacing:.02em;cursor:pointer;padding:6px}
+.bk{width:28px;height:28px;position:relative}.bk::before{content:"";position:absolute;left:9px;top:7px;width:12px;height:12px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(45deg)}
+.pv{position:relative;margin:4px auto 0;width:300px;height:440px;border-radius:18px;overflow:hidden;background:#123}
+.pv img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .35s}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 26px 0;font:400 14px "Amazon Ember";flex:none}
+.bar .pl{width:0;height:0;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.bar .tr{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.35);position:relative}.bar .tr::after{content:"";position:absolute;left:0;top:0;bottom:0;width:12%;background:#fff;border-radius:2px}
+.row{display:flex;gap:10px;padding:16px 0 0 18px;overflow:hidden;flex:none}
+.tp{flex:none;width:96px;border:0;background:none;color:#fff;padding:0;cursor:pointer;text-align:center}
+.tp .th{display:block;width:96px;height:118px;border-radius:10px;overflow:hidden;background:#1e1e1e;position:relative;box-shadow:inset 0 0 0 2px transparent}
+.tp .th img{width:100%;height:100%;object-fit:cover}.tp.on .th{box-shadow:0 0 0 2px #25d1da}
+.tp .th .none{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;color:#fff}
+.tp span.n{display:block;margin-top:8px;font:400 13.5px "Amazon Ember";white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acts{display:flex;gap:18px;padding:0 20px;margin-top:auto;margin-bottom:46px}
+.btn{flex:1;height:52px;border-radius:26px;border:0;font:700 17px "Amazon Ember";color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer}
+.btn.ai{background:linear-gradient(90deg,#6a1fe6,#3b0ff0)}.btn.ol{background:transparent;box-shadow:inset 0 0 0 1.5px #fff}.btn.cy{background:#25d1da;color:#000;flex:none;width:186px;margin-left:auto}
+.btn:active{transform:scale(.97)}
+/* generating */
+.gen{background:radial-gradient(130% 90% at 100% 0,#3d07f2 30%,#5a12d6 60%,#8b1fb4 100%)}
+.gen .top{justify-content:flex-end}
+.logo{margin:auto 0 0;padding:0 40px;font:700 46px/1 "Amazon Ember";letter-spacing:-.02em;display:flex;align-items:flex-start;gap:4px}.logo svg{margin-top:-14px}
+.gtx{padding:22px 40px 0;font:400 16px/1.4 "Amazon Ember"}
+.steps{list-style:none;margin:16px 0 0;padding:0 40px;display:grid;gap:8px}
+.steps li{display:flex;align-items:center;gap:10px;font:400 16px "Amazon Ember";opacity:.45;transition:opacity .3s}
+.steps li.on,.steps li.done{opacity:1}
+.steps li i{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7);flex:none;display:grid;place-items:center}
+.steps li.done i{background:rgba(255,255,255,.75);box-shadow:none}.steps li.done i::after{content:"";width:7px;height:4px;border-left:2px solid #5a12d6;border-bottom:2px solid #5a12d6;transform:rotate(-45deg) translate(1px,-1px)}
+.steps li.on i{box-shadow:none;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.shots{display:flex;gap:8px;padding:6px 0 0 70px;height:0;overflow:hidden;transition:height .4s}.shots.on{height:132px}
+.shots img{width:96px;height:124px;object-fit:cover;border-radius:8px}
+.idea{display:flex;align-items:center;gap:12px;padding:0 20px;margin:28px 0 46px}
+.idea .in{flex:1;height:52px;border-radius:26px;background:#fff;color:#333;display:flex;align-items:center;gap:12px;padding:0 18px;font:400 15px "Amazon Ember"}
+.idea .in b{margin-left:auto;font-size:18px;color:#222}
+.idea .st{width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center}.idea .st::after{content:"";width:18px;height:18px;border-radius:4px;background:#5a12d6}
+/* preview */
+.seg{margin:6px auto 0;display:flex;gap:4px;padding:5px;border-radius:30px;background:#3a3a3a;flex:none}
+.seg button{border:0;border-radius:24px;padding:12px 26px;font:400 16px "Amazon Ember";background:none;color:#fff;cursor:pointer}
+.seg button.on{background:#25d1da;color:#04282b}
+.pv .mk{position:absolute;inset:0;pointer-events:none}
+.lyr{position:absolute;left:16px;right:16px;bottom:22px;text-align:center;font:700 24px/1.15 "Amazon Ember";text-shadow:0 2px 10px rgba(0,0,0,.6);opacity:0;transition:opacity .3s}
+.lyr.on{opacity:1}
+.cuts{position:absolute;left:14px;right:14px;top:14px;display:flex;gap:4px;opacity:0;transition:opacity .3s}.cuts.on{opacity:1}
+.cuts i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.4)}.cuts i.a{background:#25d1da}
+/* before */
+.stp{display:flex;justify-content:center;gap:0;margin-top:54px;height:54px;align-items:center;flex:none;position:relative}
+.stp>div{display:flex;flex-direction:column;align-items:center;gap:4px;width:66px;font:400 10px "Amazon Ember";color:#ddd;position:relative}
+.stp>div i{width:16px;height:16px;border-radius:50%;background:#25d1da;box-shadow:0 0 0 4px rgba(37,209,218,.3);z-index:1}.stp>div.w i{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3)}
+.stp>div:not(:last-child)::after{content:"";position:absolute;top:7px;left:50%;width:100%;height:2px;background:#25d1da}
+.stp .bk{position:absolute;left:14px;top:13px}
+.bvid{margin:6px auto 0;width:200px;height:356px;border-radius:12px;overflow:hidden;flex:none}.bvid img{width:100%;height:100%;object-fit:cover}
+.sheet{margin-top:22px;background:#1b1b1b;border-radius:16px 16px 0 0;flex:1;display:flex;flex-direction:column;padding:10px 0 0}
+.sheet .gr{width:44px;height:5px;border-radius:3px;background:#555;margin:0 auto 14px}
+.sheet h4{margin:0 22px;font:400 15px "Amazon Ember"}
+.tabs{display:flex;gap:22px;padding:14px 22px 0;font:400 14px "Amazon Ember";color:#888}.tabs b{color:#fff;font-weight:400;border-bottom:2px solid #25d1da;padding-bottom:6px}
+.sheet .row{padding:14px 18px 0;gap:8px}.sheet .tp .th{width:78px;height:96px;background:#2a2a2a}.sheet .tp{width:78px}.sheet .tp.on .th{box-shadow:inset 0 0 0 2px #25d1da}.sheet .tp.on .th img{border-radius:8px;padding:2px}.prm{margin-top:34px!important}
+.prm{margin:16px 14px 0;height:50px;border-radius:25px;background:#fff;color:#333;display:flex;align-items:center;gap:12px;padding:0 18px;font:400 15px "Amazon Ember"}
+.gbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 40px;font:400 14px "Amazon Ember"}
+.gbar button{border:0;border-radius:22px;background:#25d1da;color:#04282b;font:700 15px "Amazon Ember";padding:12px 22px}
+.hot{animation:hot 1.6s ease-in-out infinite}@keyframes hot{0%,100%{box-shadow:0 0 0 0 rgba(255,80,80,.0)}50%{box-shadow:0 0 0 4px rgba(155,77,223,.9)}}
+.flag{position:absolute;z-index:6;background:#9b4ddf;box-shadow:0 0 0 3px rgba(155,77,223,.35);color:#fff;font:700 12px "Amazon Ember";border-radius:999px;padding:5px 10px;white-space:nowrap}
+/* media + editor */
+.mtabs{display:flex;gap:8px;justify-content:center;flex:none;margin-top:4px}
+.mtabs span{padding:8px 14px;border-radius:18px;font:400 14px "Amazon Ember";box-shadow:inset 0 0 0 1px #555}.mtabs span.on{background:#25d1da;color:#04282b;box-shadow:none}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:16px 16px 0;flex:none}
+.mc{position:relative;aspect-ratio:1;border:0;padding:0;border-radius:8px;overflow:hidden;background:#222;cursor:pointer}
+.mc img{width:100%;height:100%;object-fit:cover;display:block}
+.mc i{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 2px #fff;font:700 13px/24px "Amazon Ember";font-style:normal;text-align:center;color:#04282b}
+.mc.on i{background:#25d1da;box-shadow:none}.mc.on{box-shadow:inset 0 0 0 3px #25d1da}
+.mc b{position:absolute;left:6px;bottom:5px;font:400 11px "Amazon Ember";text-shadow:0 1px 3px #000}
+.mfoot{margin-top:auto;margin-bottom:46px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font:400 14px "Amazon Ember"}
+.mfoot .btn{flex:none;width:150px}
+.edpv{margin:6px auto 0;width:250px;height:400px;border-radius:14px;overflow:hidden;flex:none}.edpv img{width:100%;height:100%;object-fit:cover}
+.tl{margin:16px 0 0;padding:0 16px;flex:none}
+.tl .rl{display:flex;justify-content:space-between;font:400 11px "Amazon Ember";color:#aaa;margin-bottom:6px}
+.tl .tk{display:flex;gap:3px;height:52px;position:relative}
+.tl .tk span{flex:1;border-radius:6px;overflow:hidden;box-shadow:inset 0 0 0 0 #fff;cursor:pointer}.tl .tk span.on{box-shadow:inset 0 0 0 3px #fff}
+.tl .tk img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.tl .au{margin-top:6px;height:22px;border-radius:6px;background:repeating-linear-gradient(90deg,#3b0ff0 0 3px,#5a2bd9 3px 6px);opacity:.8}
+.tools{display:flex;justify-content:space-between;padding:0 18px;margin-top:auto;margin-bottom:46px}
+.tools button{border:0;background:none;color:#fff;font:400 11px "Amazon Ember";display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;opacity:.75}
+.tools button.on{opacity:1;color:#25d1da}
+.tools button i{width:30px;height:30px;border-radius:9px;box-shadow:inset 0 0 0 1.5px currentColor;display:grid;place-items:center;font:700 13px "Amazon Ember";font-style:normal}
+.panel{position:absolute;left:0;right:0;bottom:118px;background:#1b1b1b;border-radius:16px 16px 0 0;padding:16px 20px 18px;transform:translateY(24px);opacity:0;visibility:hidden;transition:transform .3s,opacity .2s,visibility .3s;z-index:3}
+.panel.on{transform:none;opacity:1;visibility:visible}.panel h5{margin:0 0 10px;font:700 15px "Amazon Ember"}
+.panel .sl{height:4px;border-radius:2px;background:#444;position:relative}.panel .sl::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--v,40%);background:#25d1da;border-radius:2px}
+.panel .sl b{position:absolute;left:var(--v,40%);top:50%;width:18px;height:18px;border-radius:50%;background:#fff;transform:translate(-50%,-50%)}
+.panel p{margin:10px 0 0;font:400 12px "Amazon Ember";color:#aaa}
+.scr.im img.bg{position:absolute;left:0;top:0;width:393px;height:auto;display:block;pointer-events:none}
+.scr.im .lay{position:absolute;inset:0;pointer-events:none}
+.hs{position:absolute;border:0;padding:0;background:transparent;cursor:pointer;border-radius:10px;z-index:4}
+.hs:hover{background:rgba(37,209,218,.14);box-shadow:inset 0 0 0 1.5px rgba(37,209,218,.7)}
+.mchk{position:absolute;width:24px;height:24px;margin:-1px 0 0 -1px;border-radius:50%;background:#25d1da;color:#062026;display:grid;place-items:center;font:700 12px/1 "Amazon Ember"}
+.mring{position:absolute;border-radius:6px;box-shadow:inset 0 0 0 3px #25d1da}
+.tsel{position:absolute;top:629px;width:78px;height:97px;border-radius:8px;box-shadow:inset 0 0 0 2px #25d1da;transition:left .2s}
+.spin{position:absolute;width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:sp .8s linear infinite}
+.gbar2{position:absolute;left:24px;right:24px;top:740px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}.gbar2 i{display:block;height:100%;width:0;background:#fff}
+#gen.on .gbar2 i{animation:gb 3.4s linear forwards}@keyframes gb{to{width:100%}}
+.seg2{position:absolute;left:86px;top:106px;width:222px;height:56px;border-radius:28px;background:#4A4A4A;display:flex;align-items:center;padding:8px;gap:6px;pointer-events:auto}
+.seg2 button{all:unset;flex:1;height:40px;border-radius:20px;text-align:center;font:400 15px/40px "Amazon Ember";color:#fff;cursor:pointer}.seg2 button.on{background:#25d1da;color:#062026}
+.ph.noSb .sb{display:none}
+.hsn{position:absolute;z-index:3;background:transparent;border:0;border-radius:20px;cursor:pointer}.hsn:focus-visible{outline:2px solid #24D0DA}</style><style id="cue">.tnone{position:absolute;left:47px;top:663px;width:28px;height:28px;fill:none;stroke:rgba(255,255,255,.85);stroke-width:1.8;stroke-linecap:round}
+.hs{border-radius:var(--r,10px)}
+.hs:hover{background:rgba(37,209,218,.10)!important;box-shadow:0 0 0 2px rgba(37,209,218,.95)!important}
+.hs.cue::before,.hs.cue::after{content:"";position:absolute;inset:-3px;border-radius:inherit;box-shadow:0 0 0 2px #25d1da;pointer-events:none}
+.hs.cue::after{animation:cue 1.8s cubic-bezier(.2,.7,.3,1) infinite}
+@keyframes cue{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(1.18)}}
+.cuetip{position:absolute;z-index:7;pointer-events:none;background:#fff;color:#062026;font:700 13px/1 "Amazon Ember";padding:9px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35);display:flex;align-items:center;gap:6px;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.cuetip.on{opacity:1;transform:none}
+.cuetip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-5px;width:10px;height:10px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.cuetip i{width:6px;height:6px;border-radius:50%;background:#25d1da;flex:none}
+@media (prefers-reduced-motion:reduce){.hs.cue::after{animation:none}.cuetip{transition:none}}
+</style></head><body>
+<div class="ph" id="ph">
+ <div class="sb"><span>9:41</span><i><b></b><u></u></i></div>
+
+ <section class="scr im" id="b1"><img class="bg" src="../case/proto/s/yourmedia.webp" alt="Before: Your Media step"><button type="button" class="hsn" data-to="b2" aria-label="Next" style="left:217px;top:775px;width:151px;height:40px"></button></section>
+<section class="scr im" id="b2"><img class="bg" src="../case/proto/s/artistmedia.webp" alt="Before: Artist Media step"><button type="button" class="hsn" data-to="before" aria-label="Next" style="left:217px;top:775px;width:151px;height:40px"></button></section>
+<section class="scr" id="before">
+  <div class="stp"><span class="bk"></span><div><i></i>Your Media</div><div><i></i>Artist Media</div><div><i></i>Template</div><div class="w"><i></i>Generate</div></div>
+  <div class="bvid"><img src="../tpl/img/am-03.webp" alt=""></div>
+  <div class="sheet"><div class="gr"></div><h4>Pick a Template or Describe the Effect You Want</h4>
+   <div class="tabs"><b>For you</b><span>Lifestyle</span><span>Beat</span><span>Velocity</span><span>Lyrics</span></div>
+   <div class="row"><span class="tp"><span class="th"><span class="none">⊘</span></span></span><span class="tp on"><span class="th"><img src="../tpl/img/ym-08.webp" alt=""></span></span><span class="tp"><span class="th"><img src="../tpl/img/am-07.webp" alt=""></span></span><span class="tp"><span class="th"><img src="../tpl/img/ym-05.webp" alt=""></span></span></div>
+   <div class="prm hot">✦ <span>Type your idea here…</span><b style="margin-left:auto">🎙</b></div>
+   <div class="gbar"><span>You’ve selected 1 template</span><button type="button" id="bgen">GENERATE</button></div>
+  </div>
+  <span class="flag" style="right:22px;top:684px">Template or prompt? Both at once</span>
+ </section>
+
+ <section class="scr im" id="media"><img class="bg" src="../case/proto/s/yourmedia.webp" alt="Your media picker"><div class="lay" id="mlay"></div><button type="button" class="hs" style="left:216px;top:774px;width:153px;height:40px" data-to="tpl" aria-label="Next"></button></section>
+ <section class="scr im" id="tpl"><img class="bg" src="../case/proto/s/template.webp" alt="Template preview"><div class="lay"><svg class="tnone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg><span class="tsel" id="tsel"></span></div><button type="button" class="hs" style="left:22px;top:629px;width:78px;height:117px" data-t="0" aria-label="Template 1"></button><button type="button" class="hs" style="left:108px;top:629px;width:78px;height:117px" data-t="1" aria-label="Template 2"></button><button type="button" class="hs" style="left:194px;top:629px;width:78px;height:117px" data-t="2" aria-label="Template 3"></button><button type="button" class="hs" style="left:280px;top:629px;width:78px;height:117px" data-t="3" aria-label="Template 4"></button><button type="button" class="hs" style="left:24px;top:770px;width:153px;height:44px" data-to="gen" aria-label="AI Edit"></button><button type="button" class="hs" style="left:216px;top:772px;width:153px;height:40px" data-to="edit" aria-label="Edit More"></button><button type="button" class="hs" style="left:20px;top:54px;width:48px;height:48px" data-to="media" aria-label="Back"></button></section>
+ <section class="scr im" id="gen"><img class="bg" src="../case/proto/s/generating.webp" alt="AI generating"><div class="lay"><span class="spin" style="left:352px;top:694px"></span><div class="gbar2"><i></i></div></div><button type="button" class="hs" style="left:247px;top:60px;width:126px;height:36px" data-to="tpl" aria-label="Notify me later"></button></section>
+ <section class="scr im" id="pre"><img class="bg" src="../case/proto/s/preview.webp" alt="AI remix preview"><div class="lay"><div class="seg2" id="seg2"><button type="button" class="on" data-m="0">Beat Match</button><button type="button" data-m="1">Lyric Match</button></div></div><button type="button" class="hs" style="left:216px;top:770px;width:153px;height:44px" data-to="edit" aria-label="Edit More"></button><button type="button" class="hs" style="left:20px;top:54px;width:48px;height:48px" data-to="tpl" aria-label="Back"></button></section>
+ <section class="scr im" id="edit"><img class="bg" src="../case/proto/s/aieditor.webp" alt="Editor"><div class="lay"></div><button type="button" class="hs" style="left:8px;top:764px;width:52px;height:60px" data-to="clip" aria-label="Clip"></button><button type="button" class="hs" style="left:20px;top:54px;width:48px;height:48px" data-to="pre" aria-label="Back"></button></section>
+ <section class="scr im" id="clip"><img class="bg" src="../case/proto/s/clip.webp" alt="Clip editor"><div class="lay"></div><button type="button" class="hs" style="left:24px;top:772px;width:153px;height:40px" data-to="edit" aria-label="Back"></button></section>
+ <div class="home"></div>
+</div>
+<script>
+(function(){
+var ph=document.getElementById('ph'),tok=0;
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.toggle('on',s.id===id)});var el=document.getElementById(id);ph.classList.toggle('noSb',el&&el.classList.contains('im'));fit();if(id==='gen'){var my=++tok;setTimeout(function(){if(my===tok&&document.getElementById('gen').classList.contains('on'))show('pre')},3400)}try{parent.postMessage({fcAt:id},'*')}catch(e){}}
+// media picks
+var xs=[16,139,262],y0=190,pick=[1,4,5],lay=document.getElementById('mlay');
+function pm(){lay.innerHTML=pick.map(function(k,n){var c=k%3,r=Math.floor(k/3);return '<span class="mring" style="left:'+xs[c]+'px;top:'+(y0+r*123)+'px;width:115px;height:115px"></span><span class="mchk" style="left:'+(xs[c]+5)+'px;top:'+(y0+r*123+5)+'px">'+(n+1)+'</span>'}).join('')}
+for(var r=0;r<4;r++)for(var c=0;c<3;c++)(function(k){var b=document.createElement('button');b.type='button';b.className='hs';b.style.cssText='left:'+xs[k%3]+'px;top:'+(y0+Math.floor(k/3)*123)+'px;width:115px;height:115px';b.setAttribute('aria-label','Select media '+(k+1));b.addEventListener('click',function(){var i=pick.indexOf(k);if(i>=0)pick.splice(i,1);else if(pick.length<9)pick.push(k);pm()});document.getElementById('media').appendChild(b)})(r*3+c);
+pm();
+// templates
+var txs=[22,108,194,280],ts=document.getElementById('tsel');function tp(i){ts.style.left=txs[i]+'px';ts.style.display=i===0?'none':''}tp(1);
+document.querySelectorAll('[data-t]').forEach(function(b){b.addEventListener('click',function(){tp(+b.dataset.t)})});
+document.querySelectorAll('[data-to]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();tok++;show(b.dataset.to)})});
+document.querySelectorAll('#seg2 button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#seg2 button').forEach(function(x){x.classList.toggle('on',x===b)})})});
+var bg=document.getElementById('bgen');if(bg)bg.addEventListener('click',function(){show('tpl')});
+addEventListener('message',function(e){var d=e.data||{};if(!d.fcGo)return;tok++;show(d.fcGo)});
+function fit(){var z=Math.min(innerWidth/(393+4),1.2);document.body.style.zoom=z;if(window.frameElement)frameElement.style.height=Math.ceil((852+4)*z)+'px'}
+ph.style.margin='2px auto';
+var h=(location.hash||'#tpl').slice(1),ok={b1:1,b2:1,before:1,media:1,tpl:1,gen:1,pre:1,edit:1,clip:1};show(ok[h]?h:'tpl');
+addEventListener('resize',fit);
+})();
+</script>
+<script>document.addEventListener("click",function(e){var b=e.target.closest(".hsn");if(b){var ev=new MessageEvent("message",{data:{fcGo:b.dataset.to}});window.dispatchEvent(ev)}});</script><script id="cue-js">(function(){
+var ph=document.getElementById('ph'),seen={};
+var C={media:['[data-to="tpl"]','Pick clips, then tap Next'],tpl:['[aria-label="AI Edit"]','Tap AI Edit'],pre:['[aria-label="Edit More"]','Fine-tune with Edit More'],edit:['[aria-label="Clip"]','Tap Clip to trim'],clip:['[aria-label="Back"]','Done, go back']};
+document.querySelectorAll('.hs').forEach(function(b){var h=parseFloat(b.style.height),w=parseFloat(b.style.width);if(h<=48&&w>100)b.style.setProperty('--r','999px');else if(h<=48)b.style.setProperty('--r','50%');else b.style.setProperty('--r','8px')});
+var tip=document.createElement('span');tip.className='cuetip';ph.appendChild(tip);
+function clear(){document.querySelectorAll('.hs.cue').forEach(function(x){x.classList.remove('cue')});tip.classList.remove('on')}
+function cue(id){clear();var c=C[id];if(!c||seen[id])return;var s=document.getElementById(id),b=s&&s.querySelector('.hs'+c[0]);if(!b)return;
+b.classList.add('cue');tip.innerHTML='<i></i>'+c[1];tip.style.left='0';tip.style.top='0';
+requestAnimationFrame(function(){var L=parseFloat(b.style.left),T=parseFloat(b.style.top),W=parseFloat(b.style.width),tw=tip.offsetWidth,cx=L+W/2,x=Math.max(12,Math.min(393-tw-12,cx-tw/2));tip.style.left=x+'px';tip.style.top=(T-tip.offsetHeight-12)+'px';tip.style.setProperty('--ax',(cx-x)+'px');setTimeout(function(){tip.classList.add('on')},350)});
+s.addEventListener('pointerdown',function f(){seen[id]=1;clear();s.removeEventListener('pointerdown',f)},{once:true})}
+var obs=new MutationObserver(function(){var on=document.querySelector('.scr.on');if(on)cue(on.id)});
+document.querySelectorAll('.scr').forEach(function(s){obs.observe(s,{attributes:true,attributeFilter:['class']})});
+var on=document.querySelector('.scr.on');if(on)cue(on.id);
+})();</script></body></html>
