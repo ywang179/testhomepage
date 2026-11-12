@@ -58,6 +58,17 @@ a{color:inherit}
 .ttl{padding-top:calc(58px + 72px + env(safe-area-inset-top,0px))!important}
 @media (max-width:959px){.ttl{padding-top:calc(58px + 56px + env(safe-area-inset-top,0px))!important}}
 @media (max-width:599px){.ttl{padding-top:calc(58px + 40px + env(safe-area-inset-top,0px))!important;padding-left:max(16px,env(safe-area-inset-left,0px))!important;padding-right:max(16px,env(safe-area-inset-right,0px))!important}}
+/* the o is the rock's flower, cut from the same drawing as on the homepage */
+.ttl h1 .fo{display:inline-block;font-size:.66em;width:.94em;height:1em;vertical-align:-.02em;margin:0 .04em;background:url(a/rock-line.png) no-repeat;background-size:auto 3.37em;background-position:-1.66em -.17em}
+:root[data-theme="dark"] .ttl h1 .fo{filter:invert(1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ttl h1 .fo{filter:invert(1)}}
+/* the last letters bob in a gentle wave on the baseline; they wobble when the title is hovered */
+.ttl h1 .tb{display:inline-block;transform:translateY(var(--y)) rotate(var(--r));transform-origin:50% 70%}
+.ttl h1{pointer-events:auto}
+.ttl h1:hover .tb{animation:tbw .6s cubic-bezier(.34,1.56,.64,1)}
+.ttl h1:hover .tb:nth-child(2){animation-delay:.05s}.ttl h1:hover .tb:nth-child(3){animation-delay:.1s}.ttl h1:hover .tb:nth-child(4){animation-delay:.15s}
+@keyframes tbw{0%{transform:translateY(var(--y)) rotate(var(--r))}35%{transform:translateY(calc(var(--y) - 8px)) rotate(calc(var(--r) * -1))}70%{transform:translateY(calc(var(--y) + 2px)) rotate(calc(var(--r) * 1.3))}100%{transform:translateY(var(--y)) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.ttl h1:hover .tb{animation:none}}
 .ttl h1{margin:0;font:800 var(--hey)/normal var(--f-display);letter-spacing:-.02em;white-space:nowrap}
 .ttl p{margin:0;font:400 var(--desc)/1.5 var(--f-display);color:var(--grey)}
 
@@ -126,7 +137,7 @@ a{color:inherit}
   <button class="themetog" type="button" aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
 </header>
 
-<div class="ttl"><div class="in"><h1>Playground</h1></div></div>
+<div class="ttl"><div class="in"><h1 aria-label="Playground"><span aria-hidden="true">Playgr<span class="tb" style="--y:3px;--r:-3deg"><span class="fo"></span></span><span class="tb" style="--y:-1px;--r:3deg">u</span><span class="tb" style="--y:4px;--r:-3deg">n</span><span class="tb" style="--y:0px;--r:4deg">d</span></span></h1></div></div>
 <main class="board" id="board" aria-label="Playground canvas. Drag to move around, scroll or pinch to zoom.">
   <div class="world" id="world">
     <div class="it card static" data-k="amz">
