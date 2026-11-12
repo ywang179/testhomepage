@@ -193,31 +193,31 @@ a{color:inherit}
       <span class="go">Open the report ⤢</span></div>
     </button>
     <div class="it card static" data-k="np">
-      <div class="media"><img src="a/new-perception.webp" width="1200" height="720" alt="Illustrated landscape of a village school with a hand holding a tablet showing a forest scene" loading="lazy"></div>
+      <div class="media"><img src="a/new-perception.webp" width="1920" height="720" alt="Illustrated landscape of a village school with a hand holding a tablet showing a forest scene" loading="lazy"></div>
       <div class="info"><ul class="tags"><li>2022 · UX</li><li>Landscape Architecture</li></ul>
       <h2>New perception &amp; new feeling</h2>
       <p>An online and offline multisensory learning experience that helps children explore the natural and cultural resources of New South&nbsp;Village.</p></div>
     </div>
     <div class="it card static" data-k="lng">
-      <div class="media"><img src="a/lounge.webp" width="1200" height="660" alt="Hand-drawn students building a model of a dorm lounge beside floor plans and activity cards" loading="lazy"></div>
+      <div class="media"><img src="a/lounge.webp" width="1920" height="720" alt="Hand-drawn students building a model of a dorm lounge beside floor plans and activity cards" loading="lazy"></div>
       <div class="info"><ul class="tags"><li>2021 · Workshop</li><li>Participatory Design</li></ul>
       <h2>Lounge co-design workshop</h2>
       <p>A workshop where students brainstormed their dream dormitory lounge and showed their ideas through simple 3D&nbsp;models.</p></div>
     </div>
     <div class="it card static" data-k="wf">
-      <div class="media"><img src="a/waterfront.webp" width="860" height="420" alt="Aerial illustration of a riverside park with winding paths" loading="lazy"></div>
+      <div class="media"><img src="a/waterfront.webp" width="860" height="720" alt="Aerial illustration of a riverside park with winding paths" loading="lazy"></div>
       <div class="info"><ul class="tags"><li>2021 · Landscape Architecture</li><li>Experience Design</li></ul>
       <h2>Unlock · waterfront project</h2>
       <p>A waterfront park that helps hard-working singles and family-focused couples unlock a relaxing, fun&nbsp;lifestyle.</p></div>
     </div>
     <div class="it card static" data-k="ws">
-      <div class="media"><img src="a/weep-site.webp" width="860" height="330" alt="Top-down illustration of a garden path winding through dense planting" loading="lazy"></div>
+      <div class="media"><img src="a/weep-site.webp" width="860" height="720" alt="Top-down illustration of a garden path winding through dense planting" loading="lazy"></div>
       <div class="info"><ul class="tags"><li>2021 · Garden Design</li></ul>
       <h2>Temporary weep site</h2>
       <p>A garden that draws attention to the inner world of people living with&nbsp;depression.</p></div>
     </div>
     <div class="it card static" data-k="drw">
-      <div class="media"><img src="a/drawings.webp" width="1020" height="720" alt="Chinese paintings of koi and a myna bird alongside pen drawings of buildings" loading="lazy"></div>
+      <div class="media"><img src="a/drawings.webp" width="1920" height="720" alt="Chinese paintings of koi and a myna bird alongside pen drawings of buildings" loading="lazy"></div>
       <div class="info"><ul class="tags"><li>Chinese Painting</li><li>Pen Drawing</li></ul>
       <h2>Drawings</h2>
       <p>A collection of my hand-drawn work, including Chinese paintings and pen&nbsp;drawings.</p></div>
@@ -245,8 +245,8 @@ const board=document.getElementById("board"),world=document.getElementById("worl
 /* layout: wide scatter on desktop, a staggered column on phones */
 const L=()=>{const m=innerWidth<600,cw=Math.min(560,innerWidth-48);
   /* desktop: loose columns, each card with its own width, nudge and breathing room */
-  const C=[0,680,1360,2040],spec={amz:[0,0,600,0],sv:[0,90,440,140],vis:[0,-10,540,80],drw:[3,60,460,160],
-    paw:[1,40,560,110],wik:[1,-30,540,130],giv:[1,90,440,90],lng:[3,20,520,120],
+  const C=[0,680,1360,2040],spec={amz:[0,0,600,0],sv:[0,90,440,140],vis:[0,-10,540,80],drw:[0,60,480,110],
+    paw:[1,40,560,110],wik:[1,-30,540,130],giv:[1,90,440,90],lng:[3,20,520,150],
     wal:[2,-10,520,20],cac:[2,30,600,80],np:[2,-40,560,140],
     wf:[3,30,520,90],ws:[3,100,460,140]},cur=[0,0,0,0];
   let y=0;world.querySelectorAll(".it").forEach(e=>{const k=e.dataset.k,q=spec[k];
