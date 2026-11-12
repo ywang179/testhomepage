@@ -59,6 +59,10 @@ a{color:inherit}
 @media (max-width:959px){.ttl{padding-top:calc(58px + 56px + env(safe-area-inset-top,0px))!important}}
 @media (max-width:599px){.ttl{padding-top:calc(58px + 40px + env(safe-area-inset-top,0px))!important;padding-left:max(16px,env(safe-area-inset-left,0px))!important;padding-right:max(16px,env(safe-area-inset-right,0px))!important}}
 /* the last letters tumble like loose toy blocks; they wobble when the title is hovered */
+/* two letters borrow the homepage's serif accent (like the y and a in "youyuan"); the rest stays bold sans */
+.ttl h1 .ac{font:italic 400 1.5em/0 var(--f-accent);-webkit-text-stroke:.03em currentColor;letter-spacing:0}
+.ttl h1 .ay{display:inline-block;margin:0 .02em 0 -.02em;transform:translateY(.06em)}
+.ttl h1 .ao{font-size:1.25em}
 .ttl h1 .tb{display:inline-block;transform:translateY(var(--y)) rotate(var(--r));transform-origin:50% 70%}
 .ttl h1{pointer-events:auto}
 .ttl h1:hover .tb{animation:tbw .6s cubic-bezier(.34,1.56,.64,1)}
@@ -133,7 +137,7 @@ a{color:inherit}
   <button class="themetog" type="button" aria-label="Switch light or dark mode"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
 </header>
 
-<div class="ttl"><div class="in"><h1 aria-label="Playground"><span aria-hidden="true">Playgr<span class="tb" style="--y:2px;--r:-3deg">o</span><span class="tb" style="--y:-7px;--r:7deg">u</span><span class="tb" style="--y:3px;--r:-8deg">n</span><span class="tb" style="--y:-9px;--r:12deg">d</span></span></h1></div></div>
+<div class="ttl"><div class="in"><h1 aria-label="Playground"><span aria-hidden="true">Pla<span class="ac ay">y</span>gr<span class="tb ac ao" style="--y:2px;--r:-3deg">o</span><span class="tb" style="--y:-7px;--r:7deg">u</span><span class="tb" style="--y:3px;--r:-8deg">n</span><span class="tb" style="--y:-9px;--r:12deg">d</span></span></h1></div></div>
 <main class="board" id="board" aria-label="Playground canvas. Drag to move around, scroll or pinch to zoom.">
   <div class="world" id="world">
     <div class="it card static" data-k="amz">
