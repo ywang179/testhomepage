@@ -254,6 +254,10 @@ const L=()=>{const m=innerWidth<600,cw=Math.min(560,innerWidth-48);
     e.style.width=q[2]+"px";e.style.left=(C[q[0]]+q[1])+"px";});
   if(!m)Object.keys(spec).forEach(k=>{const e=world.querySelector('.it[data-k="'+k+'"]'),q=spec[k];if(!e)return;cur[q[0]]+=q[3];e.style.top=cur[q[0]]+"px";cur[q[0]]+=e.offsetHeight;});};
 L();
+/* re-place once web fonts and images settle, so taller text never pushes into the next card */
+{let q=0;const re=()=>{if(q)return;q=requestAnimationFrame(()=>{q=0;L();});};
+ if(window.ResizeObserver){const ro=new ResizeObserver(re);world.querySelectorAll(".it").forEach(e=>ro.observe(e));}
+ document.fonts&&document.fonts.ready.then(re);addEventListener("load",re);}
 /* scroll window inside the canvas */
 document.querySelectorAll(".bwview").forEach(v=>{["wheel","pointerdown","touchstart"].forEach(t=>v.addEventListener(t,e=>{if(t==="wheel"&&(e.ctrlKey||e.metaKey))return;e.stopPropagation();},{passive:true}));v.addEventListener("scroll",()=>v.parentElement.classList.add("used"),{once:true});});
 /* camera */
