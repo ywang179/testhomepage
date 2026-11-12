@@ -15,15 +15,15 @@ document.documentElement.setAttribute("data-theme",t);})();
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.world.min.js"></script>
 <style>
 :root{
-  --black:#000;--white:#fff;--grey:#8C8C8C;--line:#E2E2E2;--card:#fff;--shadow:0 24px 48px -24px rgba(0,0,0,.22);
+  --black:#000;--white:#fff;--grey:#8C8C8C;--line:#D9D9D9;--card:#fff;--shadow:0 24px 48px -24px rgba(0,0,0,.22);
   --f-display:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;
   --f-body:"Poppins","Helvetica Neue",Arial,sans-serif;
   --f-accent:"IM Fell DW Pica",Georgia,serif;
   --gutter:24px;--hey:64px;--desc:24px;--ease:cubic-bezier(.2,.8,.2,1);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
-:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#383838;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#383838;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
 *{box-sizing:border-box}
 html,body{background:var(--white)}
 body{margin:0;color:var(--black);font-family:var(--f-display);-webkit-font-smoothing:antialiased}
@@ -82,11 +82,11 @@ main{overflow-x:clip;padding:72px max(var(--gutter),env(safe-area-inset-right,0p
 </style>
 
 <style>
-:root{--black:#000;--white:#fff;--grey:#8C8C8C;--line:#E2E2E2;--card:#fff;--shadow:0 24px 48px -24px rgba(0,0,0,.25);
+:root{--black:#000;--white:#fff;--grey:#8C8C8C;--line:#D9D9D9;--card:#fff;--shadow:0 24px 48px -24px rgba(0,0,0,.25);
   --f-display:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;--f-body:"Poppins","Helvetica Neue",Arial,sans-serif;--f-accent:"IM Fell DW Pica",Georgia,serif;
   --hey:64px;--desc:24px;--gutter:24px;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
-:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#383838;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#383838;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
 @media (max-width:959px){:root{--hey:56px;--desc:20px}}
 @media (max-width:599px){:root{--hey:40px;--desc:18px;--gutter:16px}}
 *{box-sizing:border-box}
@@ -624,7 +624,7 @@ h1.hey .fx{font:italic 400 calc(var(--hey)*1.25)/0 var(--f-accent);-webkit-text-
 .gcb .gcph img{inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:12px;box-shadow:none;transform:none}
 .gcb .gcph{min-height:160px}
 .gco{display:grid;gap:6px;grid-auto-rows:1fr;align-content:stretch}
-.gco button{border:.6px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--white);color:var(--black);cursor:pointer;text-align:left;font:500 16px/1.25 var(--f-body);transition:border-color .2s,background .2s,transform .15s}
+.gco button{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--white);color:var(--black);cursor:pointer;text-align:left;font:500 16px/1.25 var(--f-body);transition:border-color .2s,background .2s,transform .15s}
 .gco button small{display:block;margin-top:3px;font:400 13px/1.2 var(--f-body);color:var(--grey)}
 .gco button:hover:not(:disabled){border-color:var(--black);transform:translateY(-1px)}
 .gco button.right{border-color:var(--black);background:var(--black);color:var(--white)}
@@ -674,7 +674,12 @@ h1.hey .fx{font:italic 400 calc(var(--hey)*1.25)/0 var(--f-accent);-webkit-text-
 @media (prefers-reduced-motion:reduce){.bel .echo i{animation:none;opacity:.4}.bel .echo i:nth-child(2){transform:scale(.6)}.bel .echo i:nth-child(3){display:none}}
 
 /* outline style, same as the rest of the DS: page-colour cards with a hairline border */
-.bx{border:.6px solid var(--line)}
+.bx{border:1px solid var(--line)} /* DS Surfaces: outline card = 1px --yy-grey-line, no fill */
+
+/* page title sits exactly where the homepage "hey, it's youyuan" sits */
+@media (min-width:960px){#pAB .hey{margin-top:16px!important}}
+@media (min-width:600px) and (max-width:759px){#pAB .hey{margin-top:-3px!important}}
+@media (max-width:599px){#pAB .hey{margin-top:-19px!important}}
 </style>
 <style>main{padding-top:56px}#pAB .hey{margin:0 0 32px}.page,.tabs,.why,.meta{display:none}</style>
 <header class="nav">
