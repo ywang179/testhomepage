@@ -7,7 +7,7 @@
 <script>
 (function(){var h=(location.hash||"").slice(1),t=null;
 if(h==="dark"||h==="light")t=h;else{try{t=localStorage.getItem("yy-theme")}catch(e){}}
-if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+if(t!=="dark"&&t!=="light")t="light";
 document.documentElement.setAttribute("data-theme",t);})();
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -22,8 +22,8 @@ document.documentElement.setAttribute("data-theme",t);})();
   --gutter:24px;--hey:64px;--desc:24px;--ease:cubic-bezier(.2,.8,.2,1);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#1A1A1A;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
-:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#1A1A1A;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
 *{box-sizing:border-box}
 html,body{background:var(--white)}
 body{margin:0;color:var(--black);font-family:var(--f-display);-webkit-font-smoothing:antialiased}
@@ -82,11 +82,11 @@ main{overflow-x:clip;padding:72px max(var(--gutter),env(safe-area-inset-right,0p
 </style>
 
 <style>
-:root{--black:#000;--white:#fff;--grey:#8C8C8C;--line:#E2E2E2;--card:#F6F6F4;--shadow:0 24px 48px -24px rgba(0,0,0,.25);
+:root{--black:#000;--white:#fff;--grey:#8C8C8C;--line:#E2E2E2;--card:#fff;--shadow:0 24px 48px -24px rgba(0,0,0,.25);
   --f-display:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;--f-body:"Poppins","Helvetica Neue",Arial,sans-serif;--f-accent:"IM Fell DW Pica",Georgia,serif;
   --hey:64px;--desc:24px;--gutter:24px;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#1C1C1C;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
-:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#1C1C1C;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--black:#F2F2F2;--white:#121212;--grey:#9D9D9D;--line:#333;--card:#121212;--shadow:0 24px 48px -24px rgba(0,0,0,.7);color-scheme:dark}
 @media (max-width:959px){:root{--hey:56px;--desc:20px}}
 @media (max-width:599px){:root{--hey:40px;--desc:18px;--gutter:16px}}
 *{box-sizing:border-box}
@@ -672,6 +672,9 @@ h1.hey .fx{font:italic 400 calc(var(--hey)*1.25)/0 var(--f-accent);-webkit-text-
 .bel .echo i:nth-child(2){animation-delay:.9s}.bel .echo i:nth-child(3){animation-delay:1.8s}
 @keyframes echo{0%{transform:scale(.2);opacity:0}15%{opacity:.9}100%{transform:scale(1);opacity:0}}
 @media (prefers-reduced-motion:reduce){.bel .echo i{animation:none;opacity:.4}.bel .echo i:nth-child(2){transform:scale(.6)}.bel .echo i:nth-child(3){display:none}}
+
+/* outline style, same as the rest of the DS: page-colour cards with a hairline border */
+.bx{border:.6px solid var(--line)}
 </style>
 <style>main{padding-top:56px}#pAB .hey{margin:0 0 32px}.page,.tabs,.why,.meta{display:none}</style>
 <header class="nav">
@@ -693,25 +696,34 @@ h1.hey .fx{font:italic 400 calc(var(--hey)*1.25)/0 var(--f-accent);-webkit-text-
 <div class="gco" id="gco" role="group" aria-label="Pick a city"></div></div>
 <div class="gcf"><p class="gcm" id="gcm" aria-live="polite"></p><button type="button" class="hgn" id="gcn" hidden>Next photo</button></div></div>
 <div class="bx w2 h2 bel"><p class="k">What I believe</p><p class="t">A good product is a dynamic <span class="nw">node<span class="echo" aria-hidden="true"><i></i><i></i><i></i></span>,</span> leaving echoes that resonate now or over&nbsp;time.</p></div>
-      <div class="bx desk3"><div class="dleft"><div class="dtabs" role="tablist" aria-label="Off screen"><span class="ind" aria-hidden="true"></span><button role="tab" type="button" class="dt" id="dt0" aria-controls="dp0" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5c5-.6 11-.6 16 0 .6 3.6.6 7.4 0 11-5 .6-11 .6-16 0-.6-3.6-.6-7.4 0-11z"/><path d="M8.5 8.2 10 5.6h4l1.5 2.6"/><circle cx="12" cy="14" r="3.2"/></svg><b>Photos</b></button><button role="tab" type="button" class="dt" id="dt1" aria-controls="dp1" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c5-.5 11-.5 16 0 .5 3.8.5 7.6 0 11.4-5 .5-11 .5-16 0-.5-3.8-.5-7.6 0-11.4z"/><path d="M9 3.6 12 7.6l3.4-4.4M8 21l-.8 1.4M16 21l.8 1.4"/></svg><b>Watching</b></button><button role="tab" type="button" class="dt" id="dt2" aria-controls="dp2" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5.5l11-2.2v12.4"/><circle cx="6.4" cy="18" r="2.6"/><circle cx="17.4" cy="15.7" r="2.6"/></svg><b>Listening</b></button></div><div class="dill" aria-hidden="true"><div data-k="0"><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character with a camera slung across its body"><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-<path d="M187 142C184 162 158 173 94 174" stroke-width="2.4"/>
-<g transform="translate(80 173) scale(.68) translate(-78 -165)" stroke-width="3.6"><path d="M58 152c13-2 27-2 40 0 2 9 2 18 0 27-13 2-27 2-40 0-2-9-2-18 0-27z" fill="var(--bgc,var(--white))"/>
-<path d="M67 151l3-7h11l3 7"/>
-<circle cx="78" cy="165" r="8.5"/><circle cx="78" cy="165" r="3.4"/>
-<path class="fs" d="M48 146l-7-6M46 160h-9M52 136l-3-8"/></g>
-</g></svg></div><div data-k="1" hidden><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character watching TV"><g transform="translate(-8 42) translate(240 108) scale(.72) translate(-240 -108)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-<path d="M238 68c3 25 3 50 0 76l9-1c2-25 2-49 0-74z"/>
-<path d="M247 70c18 4 36 8 54 13 2 15 2 31 0 46-18 4-36 8-54 13"/>
-<path d="M266 94c8 1 15 3 22 5M266 104c8 1 15 2 22 4M266 114c8 0 15 0 22 0" stroke-width="2"/>
-<path d="M270 76l-10-24M284 80l12-22M252 141l-4 13M296 130l5 16"/>
-<path class="fl" d="M229 88l-9-4M229 106h-11M229 124l-9 4" stroke-width="2" stroke-dasharray="3 4"/>
-</g><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/></svg></div><div data-k="2" hidden><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character listening to music with headphones"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-<path d="M73 134C74 112 88 98 106 94c24-4 50-2 64 8 9 6 12 13 12 20"/>
-</g><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-<rect x="-7" y="-12" width="14" height="24" rx="6" transform="translate(76 145) rotate(18)" fill="var(--bgc,var(--white))"/>
-<rect x="-7" y="-12" width="14" height="24" rx="6" transform="translate(182 126) rotate(-22)" fill="var(--bgc,var(--white))"/>
-<path class="nt" transform="translate(-178 -34)" d="M232 92V66l16-4v24M232 92a5 4 0 1 1-10 0 5 4 0 1 1 10 0M248 86a5 4 0 1 1-10 0 5 4 0 1 1 10 0"/>
-<path class="nt2" transform="translate(-178 -34)" d="M282 74V50M282 74a5 4 0 1 1-10 0 5 4 0 1 1 10 0M282 50c6 2 10 6 10 12"/>
+      <div class="bx desk3"><div class="dleft"><div class="dtabs" role="tablist" aria-label="Off screen"><span class="ind" aria-hidden="true"></span><button role="tab" type="button" class="dt" id="dt0" aria-controls="dp0" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5c5-.6 11-.6 16 0 .6 3.6.6 7.4 0 11-5 .6-11 .6-16 0-.6-3.6-.6-7.4 0-11z"/><path d="M8.5 8.2 10 5.6h4l1.5 2.6"/><circle cx="12" cy="14" r="3.2"/></svg><b>Photos</b></button><button role="tab" type="button" class="dt" id="dt1" aria-controls="dp1" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c5-.5 11-.5 16 0 .5 3.8.5 7.6 0 11.4-5 .5-11 .5-16 0-.5-3.8-.5-7.6 0-11.4z"/><path d="M9 3.6 12 7.6l3.4-4.4M8 21l-.8 1.4M16 21l.8 1.4"/></svg><b>Watching</b></button><button role="tab" type="button" class="dt" id="dt2" aria-controls="dp2" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5.5l11-2.2v12.4"/><circle cx="6.4" cy="18" r="2.6"/><circle cx="17.4" cy="15.7" r="2.6"/></svg><b>Listening</b></button></div><div class="dill" aria-hidden="true"><div data-k="0"><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character with a camera slung across its body"><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/><defs><filter id="camwob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs>
+<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" filter="url(#camwob)">
+<path d="M186 140C185 157 166 168 128 170C116 170.5 108 170 103.5 169" stroke-width="3.4"/>
+<path d="M66 155.5C63.5 150 61.5 144 60 137.5" stroke-width="3.4"/>
+<g transform="translate(80 168) rotate(20) scale(.7) translate(-78 -165)" stroke-width="4.8">
+<path d="M98 153c3.5 1 6.5 2.6 8.5 4.6.6 7.5.3 15-1 22-2.4 1.6-5 2.5-8 2.8" fill="var(--bgc,var(--white))"/>
+<path d="M57 153c12-3.5 28-3 41-.5 2.5 9 2 19-.5 27.5-13 2.5-28 2-40 0-2.5-9-3-18-.5-27z" fill="var(--bgc,var(--white))"/>
+<path d="M66 152.5c1-3 2-5.5 3.5-7.5 4-.6 8-.6 11.5.2 1.5 2.2 2.4 4.6 3 7.3" fill="var(--bgc,var(--white))"/>
+<path d="M78.5 156c5.2.3 9 4.2 8.6 9.4-.4 5-4.6 8.4-9.4 8-5-.4-8.6-4.6-8-9.6.5-4.6 4.2-8 8.8-7.8z"/>
+<path d="M78 163c1.3 0 2.3 1 2.2 2.3-.1 1.2-1.2 2-2.4 1.9-1.2-.1-2-1.2-1.9-2.4.1-1.1 1.1-1.8 2.1-1.8z" fill="currentColor" stroke-width="3"/>
+<path d="M91 158.5h2.6" stroke-width="4.2"/>
+<path d="M57.5 158l-4.5 -2.5M106 158l4 -3"/>
+</g></g></svg></div><div data-k="1" hidden><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character watching TV"><defs><filter id="tvwob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs>
+<g transform="translate(-8 42) translate(240 108) scale(.72) translate(-240 -108)" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#tvwob)">
+<path d="M237.5 67.5c3.4 25 3.2 50.5-.3 76.8 3.2.2 6.2-.3 9.2-1 1.8-25.2 2-49.6-.2-74.3-2.9-.8-5.8-1.3-8.7-1.5z" fill="var(--bgc,var(--white))"/>
+<path d="M246.5 69.5c18.5 3.6 36.5 8 54.8 13.6 1.8 15.2 2 30.8-.4 46.4-18 4.2-36 8.2-54.6 12.8" fill="var(--bgc,var(--white))"/>
+<path d="M265.5 93.5c8 .8 15 2.6 22.5 5.2M265.5 104c8 .6 15.2 1.8 22.6 4.2M266 114.5c8 .2 15 .1 22.2-.6" stroke-width="3.4"/>
+<path d="M270 76.5c-3.2-8-6.4-16-10.4-24.2M283.6 80c4-7.6 8-14.8 12.6-22.2M252.5 141c-1.4 4.4-2.6 8.6-4.2 13M296 130.5c1.8 5.2 3.4 10.4 5.2 15.6"/>
+<circle cx="259.2" cy="51.6" r="2.4" fill="currentColor" stroke-width="2"/><circle cx="296.6" cy="57.4" r="2.4" fill="currentColor" stroke-width="2"/>
+<path d="M226 90.5c-3-1.6-6-2.8-9.2-4M226.5 106.5c-3.6 0-7.4.2-11 .4M226 122.5c-3 1.4-6 2.6-9.2 4" stroke-width="3.6"/>
+</g><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/></svg></div><div data-k="2" hidden><svg class="ill" viewBox="0 0 320 200" role="img" aria-label="The rock character listening to music with headphones"><defs><filter id="hpwob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="13"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs>
+<g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#hpwob)">
+<path d="M78.5 134C78 113 90 99.5 107 95.5c24-5 50-3 64.5 7.5 8.5 6 11 11.5 11.5 17"/>
+</g><image class="rl" href="a/rock-line.png" x="20" y="40" width="200" height="156"/><g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#hpwob)">
+<path transform="translate(76 145) rotate(18)" d="M-1-12.5c4.5-.4 7.6 2.4 8 6.6.5 4.4.4 9-.4 13.2-.8 4.2-4 6.6-7.8 6.2-4-.4-6.6-3.4-6.6-7.6-.2-4.2-.2-8.4.4-12.4.6-3.6 3-5.8 6.4-6z" fill="var(--bgc,var(--white))"/>
+<path transform="translate(182 126) rotate(-22)" d="M.6-12.4c3.6.2 6.2 2.6 6.6 6.2.6 4.4.6 8.8-.2 13-.8 4-3.6 6.4-7.4 6.2-4.2-.2-6.8-3.2-7-7.4-.2-4.2 0-8.6.6-12.6.6-3.6 3.6-5.6 7.4-5.4z" fill="var(--bgc,var(--white))"/>
+<path class="nt" transform="translate(-178 -34)" d="M232 92c.2-8.6.2-17.4-.2-26 5.2-1.6 10.6-2.8 16-4 .4 8 .4 16 .2 24M232 92c.4 2.6-1.8 4.6-5 4.6s-5.4-1.8-5.2-4.2c.2-2.4 2.6-4.2 5.4-4.2 2.6 0 4.6 1.6 4.8 3.8zM248 86c.4 2.6-1.8 4.6-5 4.6s-5.4-1.8-5.2-4.2c.2-2.4 2.6-4.2 5.4-4.2 2.6 0 4.6 1.6 4.8 3.8z"/>
+<path class="nt2" transform="translate(-178 -34)" d="M282 74c.2-8 .2-16-.2-24M282 74c.4 2.6-1.8 4.6-5 4.6s-5.4-1.8-5.2-4.2c.2-2.4 2.6-4.2 5.4-4.2 2.6 0 4.6 1.6 4.8 3.8zM281.8 50c6.2 1.6 10.4 6 10.6 12.4"/>
 </g></svg></div></div></div><div class="dp" role="tabpanel" id="dp0" aria-labelledby="dt0"><div class="cmap" aria-hidden="true"><svg viewBox="0 0 600 440" preserveAspectRatio="xMidYMid slice"><defs><filter id="mrough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="90" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="14"/></filter><filter id="msoft" x="-50%" y="-50%" width="200%" height="200%"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="11"/><feDisplacementMap in="SourceGraphic" scale="120" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="7"/></filter><radialGradient id="mhg"><stop offset="0" stop-color="#000"/><stop offset=".75" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient><linearGradient id="mhl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".3" stop-color="#000"/><stop offset="1" stop-color="#000"/></linearGradient><mask id="medge" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="440"><ellipse cx="270" cy="220" rx="290" ry="205" fill="#fff" filter="url(#mrough)"/><ellipse class="hole" cx="-999" cy="-999" rx="1" ry="1" fill="url(#mhg)" filter="url(#msoft)"/><rect class="hole2" x="-999" y="-999" width="1" height="1" fill="url(#mhl)" filter="url(#msoft)"/></mask><pattern id="mdots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="1.6" height="1.6" fill="currentColor"/></pattern></defs><path class="nb" mask="url(#medge)"/><path class="fillp"/><path class="land"/><g class="pin"><g class="pb"><circle class="rp" r="4"><animate attributeName="r" values="4;24" dur="2.6s" repeatCount="indefinite" calcMode="spline" keySplines=".2 .7 .3 1"/><animate attributeName="opacity" values=".9;0" dur="2.6s" repeatCount="indefinite"/></circle><circle class="rp" r="4"><animate attributeName="r" values="4;24" dur="2.6s" begin="1.3s" repeatCount="indefinite" calcMode="spline" keySplines=".2 .7 .3 1"/><animate attributeName="opacity" values=".9;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/></circle><circle class="dot" r="4.5"/></g></g></svg><p class="city"></p></div><div class="one"><button class="print" id="print" type="button" aria-label="Open photo"><img alt="" src="a/ph1.webp"></button></div><div class="trow"><button class="nv" type="button" data-d="-1" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button><div class="thumbs" id="thumbs" aria-label="All photos"></div><button class="nv" type="button" data-d="1" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button></div></div><div class="dp" role="tabpanel" id="dp1" aria-labelledby="dt1" hidden><div class="film back b3" aria-hidden="true"><div class="reel" id="reelC"></div></div><div class="film back" aria-hidden="true"><div class="reel" id="reelB"></div></div><div class="film"><div class="reel" id="reel"></div></div></div><div class="dp" role="tabpanel" id="dp2" aria-labelledby="dt2" hidden><div class="cf" id="cf" tabindex="0" role="group" aria-label="Albums, use arrow keys to browse"><div class="cfst" id="cfst"></div></div></div></div>
     </div>
   
