@@ -320,18 +320,22 @@ const all=()=>cards.forEach(k=>drawGlow(k,null));
 all();window.__glow=all;
 if(window.ResizeObserver){const ro=new ResizeObserver(e=>e.forEach(x=>drawGlow(x.target.closest(".proj"),null)));cards.forEach(k=>ro.observe(k.querySelector(".media")));}
 if(!reduce&&matchMedia("(hover: hover)").matches){
-  /* cursor trail — 2px dither pixels; grey by default, the project's colour over its card */
+  /* cursor echo — the pointer leaves small ripples that widen and fade (the "echo" idea);
+     grey by default, the project's colour over its card; a click sends a bigger double ripple */
   const tc=document.createElement("canvas");tc.id="trail";tc.setAttribute("aria-hidden","true");document.body.appendChild(tc);
-  const tx=tc.getContext("2d");let dpr=1,parts=[],running=false;
+  const tx=tc.getContext("2d");let dpr=1,parts=[],running=false,lx=-99,ly=-99,lt=0;
   const fit=()=>{dpr=Math.min(2,devicePixelRatio||1);tc.width=Math.round(innerWidth*dpr);tc.height=Math.round(innerHeight*dpr);};fit();addEventListener("resize",fit);
-  const B4=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
-  const tick=now=>{tx.setTransform(dpr,0,0,dpr,0,0);tx.clearRect(0,0,innerWidth,innerHeight);parts=parts.filter(p=>now-p.t<p.l);
-    for(const p of parts){tx.globalAlpha=1-(now-p.t)/p.l;tx.fillStyle=p.c;tx.fillRect(p.x,p.y,2,2);}
+  const out=k=>1-Math.pow(1-k,3);
+  const tick=now=>{tx.setTransform(dpr,0,0,dpr,0,0);tx.clearRect(0,0,innerWidth,innerHeight);parts=parts.filter(p=>now-p.t<p.l+p.d);
+    for(const p of parts){const k=(now-p.t-p.d)/p.l;if(k<0)continue;const r=p.r0+(p.r1-p.r0)*out(k);tx.globalAlpha=(1-k)*p.a;tx.strokeStyle=p.c;tx.lineWidth=p.w;tx.beginPath();tx.arc(p.x,p.y,r,0,Math.PI*2);tx.stroke();}
     tx.globalAlpha=1;if(parts.length)requestAnimationFrame(tick);else{running=false;tx.clearRect(0,0,innerWidth,innerHeight);}};
-  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const card=e.target.closest&&e.target.closest(".media")?e.target.closest(".proj"):null;const c=card?card.dataset.g2:"#8C8C8C",t=performance.now();
-    for(let i=0;i<6;i++){const n=B4[(Math.random()*16)|0],a=Math.random()*Math.PI*2,d=2+n*1.1;parts.push({x:Math.round((e.clientX+Math.cos(a)*d)/2)*2,y:Math.round((e.clientY+Math.sin(a)*d)/2)*2,t,c,l:420+n*28});}
-    if(parts.length>600)parts.splice(0,parts.length-600);
-    if(!running){running=true;requestAnimationFrame(tick);}},{passive:true});
+  const go=()=>{if(parts.length>80)parts.splice(0,parts.length-80);if(!running){running=true;requestAnimationFrame(tick);}};
+  const colorAt=el=>{const card=el&&el.closest&&el.closest(".media")?el.closest(".proj"):null;return card?card.dataset.g2:"#8C8C8C";};
+  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const t=performance.now(),dx=e.clientX-lx,dy=e.clientY-ly;
+    if(dx*dx+dy*dy<26*26&&t-lt<140)return;lx=e.clientX;ly=e.clientY;lt=t;
+    parts.push({x:e.clientX,y:e.clientY,t,d:0,l:620,r0:2,r1:16,w:1.2,a:.75,c:colorAt(e.target)});go();},{passive:true});
+  addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;const t=performance.now(),c=colorAt(e.target);
+    parts.push({x:e.clientX,y:e.clientY,t,d:0,l:760,r0:4,r1:34,w:1.6,a:.9,c},{x:e.clientX,y:e.clientY,t,d:140,l:760,r0:4,r1:34,w:1.2,a:.6,c});go();},{passive:true});
 }
 /* footer: keep contacts on one line — if they and the heading don't both fit, the heading scales down just enough */
 const ctaEl=document.getElementById("cta"),contactEl=document.querySelector(".contact");
