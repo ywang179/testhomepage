@@ -506,4 +506,10 @@ new IntersectionObserver(es=>es.forEach(e=>document.body.classList.toggle("intro
 /* phone header: the logo is always there; the name sits beside it */
 .mbar b,.mbar>a{display:inline-flex;align-items:center;gap:8px;min-height:28px}
 .mbar .wlogo{display:block;width:28px;height:28px;flex:none;color:var(--black)}
+</style><style id="impacthover">
+/* homepage cards: the impact line stays hidden until the card is hovered (space kept, so nothing below moves) */
+@media (hover:hover) and (pointer:fine){
+ .proj .info p{opacity:0;transform:translateY(-4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+ .proj:hover .info p,.proj:focus-visible .info p{opacity:1;transform:none}
+}
 </style></body></html>
