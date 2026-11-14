@@ -561,4 +561,15 @@ ul li[tabindex="0"]{min-height:44px;box-sizing:border-box}
  .works .proj:hover .media img,.works .proj:focus-visible .media img{transform:translateX(-50%) scale(1.045)!important}
 }
 </style>
+<style id="phone-oneline">
+/* phones: name line and project tags stay on one line */
+@media (max-width:599px){
+ .works .tags{flex-wrap:nowrap;gap:6px}
+ .works .tags li{font-size:12.5px;padding:4px 9px}
+}
+</style>
+<script id="phone-oneline-js">(function(){var mq=matchMedia("(max-width:599px)"),r=document.documentElement,t=document.querySelector(".title"),h=document.querySelector(".hey"),n=document.querySelector(".name-box");if(!t||!h||!n)return;
+function fit(){r.style.removeProperty("--hey");r.style.removeProperty("--name-s");if(!mq.matches)return;var cs=getComputedStyle(r),hz=parseFloat(cs.getPropertyValue("--hey"))||40,ns=parseFloat(cs.getPropertyValue("--name-s"))||.625,need=h.getBoundingClientRect().width+n.getBoundingClientRect().width+(parseFloat(getComputedStyle(t).columnGap)||0)+6,k=Math.min(1,t.clientWidth/need);if(k<1){r.style.setProperty("--hey",(hz*k).toFixed(2)+"px");r.style.setProperty("--name-s",(ns*k).toFixed(4))}
+document.querySelectorAll(".works .tags").forEach(function(u){u.style.fontSize="";[].forEach.call(u.children,function(l){l.style.fontSize=""});var w=0;[].forEach.call(u.children,function(l){w+=l.getBoundingClientRect().width});w+=6*(u.children.length-1);u.style.flexWrap="";if(w>u.clientWidth){var f=12.5*u.clientWidth/w-.2;if(f<11){u.style.flexWrap="wrap"}else{[].forEach.call(u.children,function(l){l.style.fontSize=f.toFixed(2)+"px"})}}})}
+fit();addEventListener("resize",fit);if(document.fonts)document.fonts.ready.then(fit);addEventListener("load",fit)})();</script>
 </body></html>
