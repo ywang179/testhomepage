@@ -1903,4 +1903,14 @@ L.forEach(function(x){document.querySelectorAll(x[0]).forEach(function(sc){if(sc
 .pv-pg svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .pv-pg button:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:8px}
 }</style><script id="pv-pager-js">(function(){var pv=document.querySelector('.pv.orbv');if(!pv||pv.querySelector('.pv-pg'))return;var cols=[].slice.call(pv.querySelectorAll('.sl'));var lis=function(c){return [].slice.call(c.querySelectorAll('li[data-o]'))};var n=lis(cols[0]).length;if(n<2)return;var ar=function(d){return '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="'+d+'"/></svg>'};var pg=document.createElement('div');pg.className='pv-pg';var h='<button type="button" class="ar p" aria-label="Previous">'+ar('M10 3 5 8l5 5')+'</button><div class="pd">';for(var k=0;k<n;k++)h+='<button type="button" aria-label="Show '+(k+1)+' of '+n+'"></button>';h+='</div><button type="button" class="ar n" aria-label="Next">'+ar('M6 3l5 5-5 5')+'</button>';pg.innerHTML=h;pv.appendChild(pg);var ds=pg.querySelectorAll('.pd button'),pv_=pg.querySelector('.p'),nx=pg.querySelector('.n');var cur=function(){var l=lis(cols[0]);for(var i=0;i<l.length;i++)if(l[i].classList.contains('on'))return i;return 0};var go=function(k){cols.forEach(function(c){var l=lis(c)[k];if(l)l.dispatchEvent(new Event('mouseenter'))})};var sync=function(){var i=cur();ds.forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')});pv_.disabled=i===0;nx.disabled=i===n-1};ds.forEach(function(b,j){b.onclick=function(){go(j)}});pv_.onclick=function(){go(Math.max(0,cur()-1))};nx.onclick=function(){go(Math.min(n-1,cur()+1))};new MutationObserver(sync).observe(cols[0],{subtree:true,attributes:true,attributeFilter:['class']});sync()})();</script>
-<style id="aud-full">@media (max-width:959px){.aud.one .ac img{content:url(a/issue3r.webp);width:100%!important;height:auto!important;object-fit:contain!important}.aud.one .ac{background:#fff!important;border-radius:12px;overflow:hidden}}</style>
+<style id="aud-full">@media (max-width:959px){.aud.one .ac img{content:url(a/issue3r.webp);width:100%!important;height:auto!important;object-fit:contain!important}.aud.one .ac{background:#fff!important;border-radius:12px;overflow:hidden}}</style><style id="pv-tight">
+/* journey card on phones and tablets: tighter stage, shorter arrow */
+@media (max-width:760px){
+ .orbv .stg2{height:228px!important}
+ .orbv .av2,.orbv .orb{top:58%!important}
+ .orbv .sl{gap:4px!important}
+ .v3.orbv .mid{padding:0!important}
+ .orbv .mid .yy-arw.trend{height:40px!important}
+ .orbv .sl[data-on] li.on{min-height:0!important}
+}
+</style>

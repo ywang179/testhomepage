@@ -548,12 +548,17 @@ ul li[tabindex="0"]{min-height:44px;box-sizing:border-box}
 .ic36::before,.hf-ic::before,.dt-steps button::before,a.go::before,button.zoom::before,button.jm::before,.hx-try::before,.ntry::before,.ax-tabs button::before,.fd-dots button::before,#entry .en::before,.thumbs button::before,.ctl button::before{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
 }
 </style><style id="impact-touch">
-/* touch screens match the mouse layout: no description under the card; the impact pill sits on the image instead of following a cursor */
-@media not ((hover:hover) and (pointer:fine)){
+/* touch screens match the mouse layout: no description under the card, and no hover-only extras */
+@media (hover:none),(pointer:coarse){
  .proj .info p{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
- .proj .media{position:relative}
- .proj .imp-st{position:absolute;left:12px;bottom:12px;z-index:2;padding:7px 12px;border-radius:999px;color:#fff;font:600 13px/1 var(--f-display);white-space:nowrap;box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 4px 14px rgba(0,0,0,.16);pointer-events:none}
 }
 </style>
-<script id="impact-touch-js">(function(){if(matchMedia("(hover: hover) and (pointer: fine)").matches)return;document.querySelectorAll(".proj[data-imp]").forEach(function(a){var m=a.querySelector(".media");if(!m||m.querySelector(".imp-st"))return;var s=document.createElement("span");s.className="imp-st";s.setAttribute("aria-hidden","true");s.textContent=a.getAttribute("data-imp");s.style.background=a.getAttribute("data-imp-col")||"var(--black)";m.appendChild(s)})})();</script>
+<style id="phone-media-full">
+/* phones show the whole card image like wider screens (no tall crop) */
+@media (max-width:599px){
+ .works .media{aspect-ratio:920/448!important;height:auto!important}
+ .works .media img{left:50%!important;transform:translateX(-50%)!important;transform-origin:50% 100%!important}
+ .works .proj:hover .media img,.works .proj:focus-visible .media img{transform:translateX(-50%) scale(1.045)!important}
+}
+</style>
 </body></html>
