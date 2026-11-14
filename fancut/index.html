@@ -2253,7 +2253,7 @@ function showAfter(){clear();mode('a');c.classList.remove('lp-pre');Nd.forEach(f
 function after(){clear();mode('a');c.classList.add('lp-pre');reset();
  T.push(setTimeout(function(){c.classList.remove('lp-pre')},500));Nd.forEach(function(n,i){T.push(setTimeout(function(){n.classList.add('lp-new')},1100+i*600))});var s0=1100+3*600+400;
  L.forEach(function(g,i){T.push(setTimeout(function(){g.classList.add('lp-in');if(!hold)on(i)},s0+i*900))});T.push(setTimeout(function(){if(!hold)on(-1);loop()},s0+3*900+400))}
-function play(){if(red){showAfter();return}showBefore();T.push(setTimeout(after,2800))}
+function play(){if(red||matchMedia("(max-width:959px)").matches){showAfter();return}showBefore();T.push(setTimeout(after,2800))}
 SB.forEach(function(x){x.addEventListener('click',function(){x.dataset.v==='b'?showBefore():showAfter()})});
 R.forEach(function(r,i){function h(){hold=true;on(i)}function u(){hold=false;on(-1)}r.addEventListener('mouseenter',h);r.addEventListener('mouseleave',u);r.addEventListener('focus',h);r.addEventListener('blur',u)});
 L.forEach(function(g,i){g.addEventListener('mouseenter',function(){hold=true;on(i)});g.addEventListener('mouseleave',function(){hold=false;on(-1)})});

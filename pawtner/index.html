@@ -951,7 +951,7 @@ const set=i=>{if(i===cur)return;cur=i;lis.forEach((l,j)=>l.classList.toggle("on"
 if(bar.scrollWidth>bar.clientWidth){const l=lis[i],x=l.offsetLeft-bar.firstElementChild.offsetLeft,vl=bar.scrollLeft,vw=bar.clientWidth;if(x<vl||x+l.offsetWidth>vl+vw)bar.scrollTo({left:x-(i?lis[i-1].offsetWidth+6:0),behavior:"smooth"})}};
 const prog=()=>{const r=f.getBoundingClientRect(),span=f.offsetHeight-innerHeight;return Math.min(.9999,Math.max(0,-r.top/Math.max(1,span)))};
 const upd=()=>set(Math.floor(prog()*n));
-let vis=false,held=false;const io=new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.3});io.observe(f);setInterval(()=>{if(vis&&!held&&!matchMedia("(prefers-reduced-motion: reduce)").matches)set((cur+1)%n)},3800);addEventListener("resize",()=>{const c=cur;cur=-1;set(Math.max(0,c))});
+let vis=false,held=false;const io=new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.3});io.observe(f);setInterval(()=>{if(vis&&!held&&!matchMedia("(max-width:959px)").matches&&!matchMedia("(prefers-reduced-motion: reduce)").matches)set((cur+1)%n)},3800);addEventListener("resize",()=>{const c=cur;cur=-1;set(Math.max(0,c))});
 img.addEventListener("load",()=>{const c=cur;cur=-1;set(Math.max(0,c))});
 lis.forEach((l,j)=>l.querySelector("button").addEventListener("click",()=>{held=true;set(j)}));
 set(0)})();</script><script>(()=>{const n=document.querySelector(".nav");if(!n)return;const f=()=>document.documentElement.style.setProperty("--navh",n.offsetHeight+"px");f();addEventListener("resize",f)})();</script><script>(()=>{const f=document.querySelector(".iterx"),b=f&&f.querySelector(".ix-skip");if(!b)return;b.addEventListener("click",()=>{const nh=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--navh"))||64;const nx=f.closest("section").nextElementSibling;const y=(nx?nx.getBoundingClientRect().top:f.getBoundingClientRect().bottom)+scrollY-nh;scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});})();</script>
@@ -976,7 +976,7 @@ set(0)})();</script><script>(()=>{const n=document.querySelector(".nav");if(!n)r
 <script>(()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll('.final,.fd').forEach(root=>{const bs=[...root.querySelectorAll('.dots button,.fd-dots button')];if(bs.length<2)return;
 const bars=bs.map(b=>{let s=b.querySelector('.cbar');if(!s){s=document.createElement('span');s.className='cbar';s.setAttribute('aria-hidden','true');b.appendChild(s)}return s});
-let auto=!reduce,inView=false,hover=false,idx=Math.max(0,bs.findIndex(b=>b.getAttribute('aria-current')==='true'));
+let auto=!reduce&&!matchMedia("(max-width:959px)").matches,inView=false,hover=false,idx=Math.max(0,bs.findIndex(b=>b.getAttribute('aria-current')==='true'));
 const pause=()=>root.classList.toggle('cpaused',!inView||hover);
 const arm=i=>{idx=i;bars.forEach(s=>s.classList.remove('run','full'));const s=bars[i];void s.offsetWidth;s.classList.add(auto?'run':'full');pause()};
 bars.forEach((s,i)=>s.addEventListener('animationend',()=>{if(!auto||idx!==i)return;bs[(i+1)%bs.length].click()}));
