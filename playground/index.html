@@ -274,8 +274,10 @@ const go=(ns,nx,ny,anim)=>{cancelAnimationFrame(raf);if(!anim||reduce){s=ns;tx=n
   const s0=s,x0=tx,y0=ty,t0=performance.now();const st=n=>{const k=Math.min(1,(n-t0)/450),e=1-Math.pow(1-k,3);s=s0+(ns-s0)*e;tx=x0+(nx-x0)*e;ty=y0+(ny-y0)*e;apply();if(k<1)raf=requestAnimationFrame(st);};raf=requestAnimationFrame(st);};
 /* start: title + Pawtner in view on desktop, everything on phones */
 /* start at 100%, so type matches the homepage; canvas begins under the fixed title, on the 920px column */
-const start=()=>{const t=document.querySelector(".ttl").getBoundingClientRect().bottom;go(1,Math.max(innerWidth<600?16:24,(innerWidth-920)/2),t+8,false);};
+const start=()=>{if(innerWidth<960){fit(false);return}const t=document.querySelector(".ttl").getBoundingClientRect().bottom;go(1,Math.max(innerWidth<600?16:24,(innerWidth-920)/2),t+8,false);};
 start();
+/* phones open on the fitted overview; refit once fonts and images settle, until the visitor moves the canvas */
+{let touched=0;board.addEventListener("pointerdown",()=>touched=1,{once:true});document.querySelectorAll(".zoomctl button,#zin,#zout,#zfit").forEach(b=>b.addEventListener("click",()=>touched=1));const re=()=>{if(!touched&&innerWidth<960)fit(false)};document.fonts&&document.fonts.ready.then(()=>requestAnimationFrame(re));addEventListener("load",()=>requestAnimationFrame(re));setTimeout(re,1200);}
 document.getElementById("zin").onclick=()=>zoomAt(s*1.25,innerWidth/2,innerHeight/2);
 document.getElementById("zout").onclick=()=>zoomAt(s/1.25,innerWidth/2,innerHeight/2);
 document.getElementById("zfit").onclick=()=>fit(true);
