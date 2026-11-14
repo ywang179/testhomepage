@@ -257,19 +257,19 @@ html,body{transition:background-color .3s}
 </div></section>
 
 <section class="works" id="work" aria-label="Featured work"><div class="wrap">
-  <a class="proj" href="./crm/" data-g1="#2B8E96" data-g2="#38C5C7">
+  <a class="proj" href="./crm/" data-g1="#2B8E96" data-g2="#38C5C7" data-imp="250+ hrs saved daily" data-imp-col="#2B8E96">
     <div class="media"><canvas aria-hidden="true"></canvas><img src="a/crm.webp" alt="XDF Cultural Tourism CRM dashboard screens" width="920" height="448"></div>
     <div class="info"><ul class="tags"><li>2024 · Shipped</li><li>CRM</li><li>AI SUMMARY</li></ul>
       <h2 class="cap">CRM leads followup flow</h2>
       <p>Designing a scalable, action-oriented sales follow-up experience that saved 250+ hours daily and boosted follow-up efficiency, conversion, and WeChat add success.</p></div>
   </a>
-  <a class="proj" href="./hennessy/" data-g1="#A8071A" data-g2="#C13D23">
+  <a class="proj" href="./hennessy/" data-g1="#A8071A" data-g2="#C13D23" data-imp="+15.2% engagement" data-imp-col="#A8071A">
     <div class="media"><canvas aria-hidden="true"></canvas><img src="a/loyalty.webp" loading="lazy" decoding="async" alt="Hennessy membership app screens" width="920" height="448"></div>
     <div class="info"><ul class="tags"><li>2023 · Shipped</li><li>Loyalty</li><li>Online2Offline</li></ul>
       <h2 class="cap">Hennessy travel membership center</h2>
       <p>Redesigning a travel-centered membership system around value and emotion, driving +15.2% engagement and higher benefit redemption.</p></div>
   </a>
-  <a class="proj pop" href="./fancut/" data-g1="#2F1348" data-g2="#9A38EC">
+  <a class="proj pop" href="./fancut/" data-g1="#2F1348" data-g2="#9A38EC" data-imp="4 weeks to tested prototype" data-imp-col="#7B2CC8">
     <div class="media"><canvas aria-hidden="true"></canvas><img src="a/fancut.webp?v=4" loading="lazy" decoding="async" alt="FanCut, an AI remix editor for Amazon Music" width="920" height="448"></div>
     <div class="info"><ul class="tags"><li>2026 · Design Hackathon</li><li>Amazon Music</li><li>AI Editor</li></ul>
       <h2 class="cap b7">Amazon Music fan remix editor</h2>
@@ -507,9 +507,21 @@ new IntersectionObserver(es=>es.forEach(e=>document.body.classList.toggle("intro
 .mbar b,.mbar>a{display:inline-flex;align-items:center;gap:8px;min-height:28px}
 .mbar .wlogo{display:block;width:28px;height:28px;flex:none;color:var(--black)}
 </style><style id="impacthover">
-/* homepage cards: the impact line stays hidden until the card is hovered (space kept, so nothing below moves) */
+/* homepage cards: on a mouse, a short impact pill in the project's colour follows the cursor */
 @media (hover:hover) and (pointer:fine){
- .proj .info p{opacity:0;transform:translateY(-4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
- .proj:hover .info p,.proj:focus-visible .info p{opacity:1;transform:none}
+ .proj .info p{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .imp-tip{position:fixed;left:0;top:0;z-index:50;padding:8px 14px;border-radius:999px;background:var(--black);color:#fff;font:600 14px/1 var(--f-display);white-space:nowrap;box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 6px 18px rgba(0,0,0,.18);pointer-events:none;opacity:0;transition:opacity .2s var(--ease);will-change:transform}
+ .imp-tip.on{opacity:1}
 }
-</style></body></html>
+@media (prefers-reduced-motion:reduce){.imp-tip{transition:none}}
+</style>
+<script>(function(){if(!matchMedia("(hover: hover) and (pointer: fine)").matches)return;
+const tip=document.createElement("div");tip.className="imp-tip";tip.setAttribute("aria-hidden","true");document.body.appendChild(tip);
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;let tx=0,ty=0,x=0,y=0,raf=0,on=false;
+const place=()=>{const w=tip.offsetWidth,h=tip.offsetHeight;let nx=tx+18,ny=ty+20;if(nx+w>innerWidth-12)nx=tx-w-18;if(ny+h>innerHeight-12)ny=ty-h-18;
+ if(still){x=nx;y=ny}else{x+=(nx-x)*.22;y+=(ny-y)*.22}tip.style.transform=`translate(${x}px,${y}px)`;if(on&&(Math.abs(nx-x)>.5||Math.abs(ny-y)>.5))raf=requestAnimationFrame(place);else raf=0};
+document.querySelectorAll(".proj").forEach(c=>{const p=c.querySelector(".info p");if(!p)return;
+ c.addEventListener("mouseenter",e=>{tip.textContent=c.dataset.imp||p.textContent.trim();tip.style.background=c.dataset.impCol||"";tx=e.clientX;ty=e.clientY;x=tx+18;y=ty+20;on=true;tip.classList.add("on");place()});
+ c.addEventListener("mousemove",e=>{tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(place)});
+ c.addEventListener("mouseleave",()=>{on=false;tip.classList.remove("on")})});
+addEventListener("scroll",()=>{if(on){on=false;tip.classList.remove("on")}},{passive:true});})();</script></body></html>
